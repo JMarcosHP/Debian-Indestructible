@@ -27,7 +27,7 @@ UUID=25546872-9144-40d6-a4a3-9d501972fc66       /tmp                           b
 UUID=25546872-9144-40d6-a4a3-9d501972fc66       /.snapshots                    btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/.snapshots                    0 1
 
 # SWAP PARTITION
-UUID=7add2bd0-29b8-431b-9f8a-057a7dc168fa       none                           swap defaults                                                                                                    0 0
+#UUID=7add2bd0-29b8-431b-9f8a-057a7dc168fa       none                           swap defaults                                                                                                    0 0
 
 # ALTERNATIVE SWAPFILE
 #UUID=25546872-9144-40d6-a4a3-9d501972fc66       /swap                          btrfs noatime,nodiratime,compress=no,subvol=/@/swap                                                              0 0
