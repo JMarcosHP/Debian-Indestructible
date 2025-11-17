@@ -1,0 +1,4 @@
+Debian UUID=e4f439b7-5e22-4e9a-b20d-e0a7d281e07c none luks
+
+# Automatic unlock with keyfile
+#Debian UUID=e4f439b7-5e22-4e9a-b20d-e0a7d281e07c /etc/luks/boot_os.keyfile luks

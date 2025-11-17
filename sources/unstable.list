@@ -1,0 +1,5 @@
+deb http://deb.debian.org/debian/ unstable main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ unstable main contrib non-free non-free-firmware
+
+deb http://deb.debian.org/debian/ experimental main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ experimental main contrib non-free non-free-firmware

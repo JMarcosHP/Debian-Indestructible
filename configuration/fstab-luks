@@ -1,0 +1,67 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+
+# ESP
+UUID=2D13-B9DB          /boot/efi                      vfat noatime,nodiratime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro 0 1
+
+# SYSTEM
+# We don't specify a subvolume for / , since Snapper will change the default subvolume to mount the partition after every rollback, ex: @/.snapshots/x/snapshot.
+/dev/mapper/Debian      /                              btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120                                         0 1
+/dev/mapper/Debian      /root                          btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/root                          0 1
+/dev/mapper/Debian      /home                          btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/home                          0 1
+/dev/mapper/Debian      /opt                           btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/opt                           0 1
+/dev/mapper/Debian      /srv                           btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/srv                           0 1
+/dev/mapper/Debian      /usr/local                     btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/usr/local                     0 1
+/dev/mapper/Debian      /var/log                       btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/log                       0 1
+/dev/mapper/Debian      /var/cache                     btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/cache                     0 1
+/dev/mapper/Debian      /var/spool                     btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/spool                     0 1
+/dev/mapper/Debian      /var/tmp                       btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/tmp                       0 1
+/dev/mapper/Debian      /var/lib/machines              btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/machines              0 1
+/dev/mapper/Debian      /var/lib/portables             btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/portables             0 1
+/dev/mapper/Debian      /tmp                           btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/tmp                           0 1
+/dev/mapper/Debian      /.snapshots                    btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/.snapshots                    0 1
+
+# SWAPFILE
+#/dev/mapper/Debian      /swap                          btrfs noatime,nodiratime,compress=no,subvol=/@/swap                                                              0 0
+#/swap/swapfile          none                           swap  defaults                                                                                                   0 0
+
+# Desktop Environment
+#/dev/mapper/Debian      /var/lib/AccountsService       btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/AccountsService       0 1
+#/dev/mapper/Debian      /var/lib/sddm                  btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/sddm                  0 1
+#/dev/mapper/Debian      /var/lib/gdm3                  btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/gdm3                  0 1
+
+# Flatpak
+#/dev/mapper/Debian      /var/lib/flatpak               btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/flatpak               0 1
+
+# Snap
+#/dev/mapper/Debian      /snap                          btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/snap                          0 1
+#/dev/mapper/Debian      /var/snap                      btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/snap                      0 1
+#/dev/mapper/Debian      /var/lib/snapd                 btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/snapd                 0 1
+
+# Virtual Machines & LXCs
+#/dev/mapper/Debian      /var/lib/libvirt               btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/libvirt               0 1
+#/dev/mapper/Debian      /var/lib/lxc                   btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/lxc                   0 1
+#/dev/mapper/Debian      /var/lib/lxcfs                 btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/lxcfs                 0 1
+
+# Docker
+#/dev/mapper/Debian      /var/lib/docker                btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/docker                0 1
+#/dev/mapper/Debian      /var/lib/containerd            btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/containerd            0 1
+
+# Podman
+#/dev/mapper/Debian      /var/lib/containers            btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/containers            0 1
+
+# Waydroid
+#/dev/mapper/Debian      /var/lib/waydroid              btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/waydroid              0 1
+
+# Databases
+#/dev/mapper/Debian      /var/lib/postgres              btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/postgres              0 1
+#/dev/mapper/Debian      /var/lib/mysql                 btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/mysql                 0 1
+#/dev/mapper/Debian      /var/lib/mongodb               btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/mongodb               0 1
+
+# Extra
+# ...

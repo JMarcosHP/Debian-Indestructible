@@ -1,0 +1,194 @@
+#!/bin/bash
+#
+# Snapper plugin to update GRUB configuration POST-ROLLBACK
+# Author: Jehu Marcos Herrera Puentes
+# Original source:
+# https://github.com/siduction/siduction-btrfs/blob/main/siduction-btrfs-0.4.0/rollback-grub.sh
+#
+# Installation:
+# Copy this file to /usr/lib/snapper/plugins
+# Allow execution with chmod +x /usr/lib/plugins/99-rollback-grub
+#
+set -e
+
+# Logging capabilities
+LOG_FILE="/var/log/snapper.log"
+log_msg() {
+    echo "$(date +%T) Plugin rollback-grub: $1" >> "$LOG_FILE"
+}
+
+# Validate that / filesystem is BTRFS
+if [ "X$2" != "X/" ] || [ "X$3" != "Xbtrfs" ]; then
+    exit 0
+fi
+
+case "$1" in
+"rollback-post")
+    log_msg "=== STARTING POST-ROLLBACK GRUB PLUGIN ==="
+    log_msg "Received parameters: old_sn=$4, new_sn=$5"
+
+    # Parameter: $4 = Old snapshot backup subvolume
+    # Parameter: $5 = New rollbacked default snapshot subvolume
+
+    old_sn="$4" # Old snapshot backup subvolume
+    new_sn="$5" # New rollbacked default snapshot subvolume
+
+    log_msg "Old snapshot backup subvolume: $old_sn, New rollback snapshot subvolume: $new_sn"
+
+    # Build the path for the new default writable subvolume
+    btrfs_default="@/.snapshots/$new_sn/snapshot"
+    log_msg "Target subvolume: $btrfs_default"
+
+    # Determine the disk partition where the filesystem resides
+    root_dev=$(grep ' / ' /proc/mounts | cut -d ' ' -f 1)
+    log_msg "Root device: $root_dev"
+
+    # Determine the grub installation mode and set the target path
+    if findmnt /boot/efi &>/dev/null; then
+        grub_target=""
+        install_mode="efi"
+        log_msg "✓ EFI Mode detected"
+    else
+        install_mode="bios"
+        list=$(mount | grep '^/dev/[sn]' | cut -d " " -f 1 | sed 's!p\?[0-9]\+$!!' | uniq)
+        log_msg "Searching GRUB on disk devices: $list"
+        grub_target=""
+    for i in $list; do
+        if dd if="$i" count=4000 2>/dev/null | grep --no-ignore-case -ao GRUB &>/dev/null; then
+            log_msg "✓ MBR GRUB found in $i"
+            grub_target="$i"
+            break
+        fi
+    done
+
+        if [ -z "$grub_target" ]; then
+            log_msg "✗ ERROR: No GRUB installation target found"
+            exit 1
+        fi
+    fi
+
+    # Create a temporary mount directory
+    tmp_dir=$(mktemp -d /tmp/sn-rollback.XXXXXXXXXXXX)
+    log_msg "Temporary directory: $tmp_dir"
+
+    # Cleaning function
+    cleanup() {
+        log_msg "Cleaning up..."
+        for i in "/dev" "/sys" "/run" "/proc"; do
+            umount -R "${tmp_dir}${i}" 2>/dev/null || true
+        done
+        umount "${tmp_dir}/boot/efi" 2>/dev/null || true
+        umount "${tmp_dir}/boot" 2>/dev/null || true
+        umount "${tmp_dir}" 2>/dev/null || true
+        rmdir "$tmp_dir" 2>/dev/null || true
+    }
+    trap cleanup EXIT
+
+    # Mount the new rollbacked snapshot
+    log_msg "Mounting the new default snapshot subvolume..."
+    if mount -t btrfs -o "subvol=${btrfs_default}" "${root_dev}" "${tmp_dir}"; then
+        log_msg "✓ Snapshot mounted successfully"
+    else
+        log_msg "✗ ERROR when mounting the snapshot subvolume"
+        exit 1
+    fi
+
+    # Bind mounts needed for chroot
+    log_msg "Configuring bind mounts..."
+    for i in "/proc" "/run" "/sys" "/dev"; do
+        if [ -d "${tmp_dir}${i}" ]; then
+            if mount --rbind ${i} "${tmp_dir}${i}" && mount --make-rslave "${tmp_dir}${i}"; then
+                log_msg "✓ Bind mount: $i"
+            else
+                log_msg "✗ ERROR in bind mount: $i"
+            fi
+        fi
+    done
+
+    # Export variables for chroot
+    export new_sn
+    export grub_target
+    export install_mode
+    export LOG_FILE
+
+    log_msg "Running commands inside the chrooted subvolume..."
+
+    # Chroot the subvolume, reinstall and update grub.cfg
+    chroot "${tmp_dir}" /bin/bash -x 2>&1 << 'CHROOT_EOF' | tee -a "$LOG_FILE"
+echo "=== INSIDE THE CHROOT ==="
+
+# Mount /boot & /boot/efi if they exist in /etc/fstab
+if mount /boot 2>/dev/null; then
+    echo "✓ /boot mounted"
+else
+    echo "✗ /boot not mounted (Maybe the system does not have a separated /boot)"
+fi
+
+if mount /boot/efi 2>/dev/null; then
+    echo "✓ /boot/efi mounted"
+else
+    echo "✗ /boot/efi not mounted (Maybe the system does not have an EFI partition)"
+fi
+
+# Update GRUB configuration using available command
+if [ -x /usr/sbin/update-grub ]; then
+    echo "Running update-grub..."
+    if /usr/sbin/update-grub; then
+        echo "✓ update-grub executed successfully"
+        grub_update_success=true
+    else
+        echo "✗ ERROR when running update-grub or wrapper not found"
+        grub_update_success=false
+    fi
+elif [ -x /usr/sbin/grub-mkconfig ]; then
+    echo "Fallback, trying with grub-mkconfig..."
+    if /usr/sbin/grub-mkconfig -o /boot/grub/grub.cfg; then
+        echo "✓ grub-mkconfig executed successfully"
+        grub_update_success=true
+    else
+        echo "✗ ERROR when running grub-mkconfig"
+        grub_update_success=false
+    fi
+else
+    echo "✗ Neither update-grub nor grub-mkconfig found"
+    grub_update_success=false
+fi
+
+# Indicate the snapshot number in GRUB's menuentry (only if update succeeded)
+if [ "$grub_update_success" = true ] && [ -f /boot/grub/grub.cfg ]; then
+    sed -i "s|\(^menuentry '\)\([^']*\)|\1\2 (snapshot $new_sn)|" /boot/grub/grub.cfg
+    echo "✓ Snapshot number set in GRUB's menuentry"
+fi
+
+# Reinstall GRUB depending on the mode
+if [ "$install_mode" = "efi" ]; then
+    if [ -x /usr/sbin/grub-install ]; then
+        echo "Running grub-install (EFI)..."
+        if /usr/sbin/grub-install 2>&1; then
+            echo "✓ grub-install executed successfully"
+        else
+            echo "✗ ERROR in grub-install"
+        fi
+    fi
+elif [ "$install_mode" = "bios" ] && [ -n "$grub_target" ]; then
+    if [ -x /usr/sbin/grub-install ]; then
+        echo "Running grub-install in $grub_target (BIOS)..."
+        if /usr/sbin/grub-install "$grub_target" 2>&1; then
+            echo "✓ grub-install executed successfully"
+        else
+            echo "✗ ERROR in grub-install"
+        fi
+    fi
+fi
+
+# Unmount everything
+umount /boot/efi 2>/dev/null || true
+umount /boot 2>/dev/null || true
+
+echo "=== LEAVING THE CHROOT ==="
+CHROOT_EOF
+
+    log_msg "=== GRUB POST-ROLLBACK PLUGIN FINISHED ==="
+    ;;
+esac
+exit 0
