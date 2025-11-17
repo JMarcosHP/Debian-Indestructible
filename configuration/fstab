@@ -31,7 +31,7 @@ UUID=7add2bd0-29b8-431b-9f8a-057a7dc168fa       none                           s
 
 # ALTERNATIVE SWAPFILE
 #UUID=25546872-9144-40d6-a4a3-9d501972fc66       /swap                          btrfs noatime,nodiratime,compress=no,subvol=/@/swap                                                              0 0
-#/swap/swapfile                                  none                          swap  defaults                                                                                                    0 0
+#/swap/swapfile                                  none                           swap  defaults                                                                                                   0 0
 
 # Desktop Environment
 #UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/AccountsService       btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/AccountsService       0 1
