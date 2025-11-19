@@ -7,64 +7,64 @@
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
 
 # ESP
-UUID=2D13-B9DB                                  /boot/efi                      vfat noatime,nodiratime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro 0 1
+UUID=dummy-esp                                  /boot/efi                      vfat noatime,nodiratime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro 0 1
 
 # SYSTEM
 # We don't specify a subvolume for / , since Snapper will change the default subvolume to mount the partition after every rollback, ex: @/.snapshots/x/snapshot.
-UUID=25546872-9144-40d6-a4a3-9d501972fc66       /                              btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120                                         0 1
-UUID=25546872-9144-40d6-a4a3-9d501972fc66       /root                          btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/root                          0 1
-UUID=25546872-9144-40d6-a4a3-9d501972fc66       /home                          btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/home                          0 1
-UUID=25546872-9144-40d6-a4a3-9d501972fc66       /opt                           btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/opt                           0 1
-UUID=25546872-9144-40d6-a4a3-9d501972fc66       /srv                           btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/srv                           0 1
-UUID=25546872-9144-40d6-a4a3-9d501972fc66       /usr/local                     btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/usr/local                     0 1
-UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/log                       btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/log                       0 1
-UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/cache                     btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/cache                     0 1
-UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/spool                     btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/spool                     0 1
-UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/tmp                       btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/tmp                       0 1
-UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/machines              btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/machines              0 1
-UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/portables             btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/portables             0 1
-UUID=25546872-9144-40d6-a4a3-9d501972fc66       /tmp                           btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/tmp                           0 1
-UUID=25546872-9144-40d6-a4a3-9d501972fc66       /.snapshots                    btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/.snapshots                    0 1
+UUID=dummy-system       /                              btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120                                         0 1
+UUID=dummy-system       /root                          btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/root                          0 1
+UUID=dummy-system       /home                          btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/home                          0 1
+UUID=dummy-system       /opt                           btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/opt                           0 1
+UUID=dummy-system       /srv                           btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/srv                           0 1
+UUID=dummy-system       /usr/local                     btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/usr/local                     0 1
+UUID=dummy-system       /var/log                       btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/log                       0 1
+UUID=dummy-system       /var/cache                     btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/cache                     0 1
+UUID=dummy-system       /var/spool                     btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/spool                     0 1
+UUID=dummy-system       /var/tmp                       btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/tmp                       0 1
+UUID=dummy-system       /var/lib/machines              btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/machines              0 1
+UUID=dummy-system       /var/lib/portables             btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/portables             0 1
+UUID=dummy-system       /tmp                           btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/tmp                           0 1
+UUID=dummy-system       /.snapshots                    btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/.snapshots                    0 1
 
 # SWAP PARTITION
-#UUID=7add2bd0-29b8-431b-9f8a-057a7dc168fa       none                           swap defaults                                                                                                    0 0
+#UUID=dummy-swap       none                           swap defaults                                                                                                    0 0
 
 # ALTERNATIVE SWAPFILE
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /swap                          btrfs noatime,nodiratime,compress=no,subvol=/@/swap                                                              0 0
+#UUID=dummy-system       /swap                          btrfs noatime,nodiratime,compress=no,subvol=/@/swap                                                              0 0
 #/swap/swapfile                                  none                           swap  defaults                                                                                                   0 0
 
 # Desktop Environment
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/AccountsService       btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/AccountsService       0 1
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/sddm                  btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/sddm                  0 1
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/gdm3                  btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/gdm3                  0 1
+#UUID=dummy-system       /var/lib/AccountsService       btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/AccountsService       0 1
+#UUID=dummy-system       /var/lib/sddm                  btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/sddm                  0 1
+#UUID=dummy-system       /var/lib/gdm3                  btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/gdm3                  0 1
 
 # Flatpak
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/flatpak               btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/flatpak               0 1
+#UUID=dummy-system       /var/lib/flatpak               btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/flatpak               0 1
 
 # Snap
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /snap                          btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/snap                          0 1
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/snap                      btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/snap                      0 1
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/snapd                 btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/snapd                 0 1
+#UUID=dummy-system       /snap                          btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/snap                          0 1
+#UUID=dummy-system       /var/snap                      btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/snap                      0 1
+#UUID=dummy-system       /var/lib/snapd                 btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/snapd                 0 1
 
 # Virtual Machines & LXCs
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/libvirt               btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/libvirt               0 1
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/lxc                   btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/lxc                   0 1
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/lxcfs                 btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/lxcfs                 0 1
+#UUID=dummy-system       /var/lib/libvirt               btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/libvirt               0 1
+#UUID=dummy-system       /var/lib/lxc                   btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/lxc                   0 1
+#UUID=dummy-system       /var/lib/lxcfs                 btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/lxcfs                 0 1
 
 # Docker
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/docker                btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/docker                0 1
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/containerd            btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/containerd            0 1
+#UUID=dummy-system       /var/lib/docker                btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/docker                0 1
+#UUID=dummy-system       /var/lib/containerd            btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/containerd            0 1
 
 # Podman
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/containers            btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/containers            0 1
+#UUID=dummy-system       /var/lib/containers            btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/containers            0 1
 
 # Waydroid
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/waydroid              btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/waydroid              0 1
+#UUID=dummy-system       /var/lib/waydroid              btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/waydroid              0 1
 
 # Databases
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/postgres              btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/postgres              0 1
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/mysql                 btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/mysql                 0 1
-#UUID=25546872-9144-40d6-a4a3-9d501972fc66       /var/lib/mongodb               btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/mongodb               0 1
+#UUID=dummy-system       /var/lib/postgres              btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/postgres              0 1
+#UUID=dummy-system       /var/lib/mysql                 btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/mysql                 0 1
+#UUID=dummy-system       /var/lib/mongodb               btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/mongodb               0 1
 
 # Extra
 # ...
