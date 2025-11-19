@@ -29,7 +29,7 @@ UUID=dummy-system       /.snapshots                    btrfs noatime,nodiratime,
 # SWAP PARTITION
 #UUID=dummy-swap       none                           swap defaults                                                                                                    0 0
 
-# ALTERNATIVE SWAPFILE
+# SWAPFILE
 #UUID=dummy-system       /swap                          btrfs noatime,nodiratime,compress=no,subvol=/@/swap                                                              0 0
 #/swap/swapfile                                  none                           swap  defaults                                                                                                   0 0
 
