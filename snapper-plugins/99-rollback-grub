@@ -39,7 +39,7 @@ case "$1" in
     btrfs_default="@/.snapshots/$new_sn/snapshot"
     log_msg "Target subvolume: $btrfs_default"
 
-    # Determine the disk partition where the filesystem resides
+    # Determine the disk partition device where the filesystem resides
     root_dev=$(grep ' / ' /proc/mounts | cut -d ' ' -f 1)
     log_msg "Root device: $root_dev"
 
@@ -47,7 +47,7 @@ case "$1" in
     if findmnt /boot/efi &>/dev/null; then
         grub_target=""
         install_mode="efi"
-        log_msg "✓ EFI Mode detected"
+        log_msg "EFI Mode detected"
     else
         install_mode="bios"
         list=$(mount | grep '^/dev/[sn]' | cut -d " " -f 1 | sed 's!p\?[0-9]\+$!!' | uniq)
@@ -55,14 +55,14 @@ case "$1" in
         grub_target=""
     for i in $list; do
         if dd if="$i" count=4000 2>/dev/null | grep --no-ignore-case -ao GRUB &>/dev/null; then
-            log_msg "✓ MBR GRUB found in $i"
+            log_msg "MBR GRUB found in $i"
             grub_target="$i"
             break
         fi
     done
 
         if [ -z "$grub_target" ]; then
-            log_msg "✗ ERROR: No GRUB installation target found"
+            log_msg "ERROR: No GRUB installation target found"
             exit 1
         fi
     fi
@@ -87,9 +87,9 @@ case "$1" in
     # Mount the new rollbacked snapshot
     log_msg "Mounting the new default snapshot subvolume..."
     if mount -t btrfs -o "subvol=${btrfs_default}" "${root_dev}" "${tmp_dir}"; then
-        log_msg "✓ Snapshot mounted successfully"
+        log_msg "Snapshot mounted successfully"
     else
-        log_msg "✗ ERROR when mounting the snapshot subvolume"
+        log_msg "ERROR when mounting the snapshot subvolume"
         exit 1
     fi
 
@@ -98,9 +98,9 @@ case "$1" in
     for i in "/proc" "/run" "/sys" "/dev"; do
         if [ -d "${tmp_dir}${i}" ]; then
             if mount --rbind ${i} "${tmp_dir}${i}" && mount --make-rslave "${tmp_dir}${i}"; then
-                log_msg "✓ Bind mount: $i"
+                log_msg "Bind mount: $i"
             else
-                log_msg "✗ ERROR in bind mount: $i"
+                log_msg "ERROR in bind mount: $i"
             fi
         fi
     done
@@ -119,45 +119,45 @@ echo "=== INSIDE THE CHROOT ==="
 
 # Mount /boot & /boot/efi if they exist in /etc/fstab
 if mount /boot 2>/dev/null; then
-    echo "✓ /boot mounted"
+    echo "/boot mounted"
 else
-    echo "✗ /boot not mounted (Maybe the system does not have a separated /boot)"
+    echo "/boot not mounted (Maybe the system does not have a separated /boot)"
 fi
 
 if mount /boot/efi 2>/dev/null; then
-    echo "✓ /boot/efi mounted"
+    echo "/boot/efi mounted"
 else
-    echo "✗ /boot/efi not mounted (Maybe the system does not have an EFI partition)"
+    echo "/boot/efi not mounted (Maybe the system does not have an EFI partition)"
 fi
 
 # Update GRUB configuration using available command
 if [ -x /usr/sbin/update-grub ]; then
     echo "Running update-grub..."
     if /usr/sbin/update-grub; then
-        echo "✓ update-grub executed successfully"
+        echo "update-grub executed successfully"
         grub_update_success=true
     else
-        echo "✗ ERROR when running update-grub or wrapper not found"
+        echo "ERROR when running update-grub or wrapper not found"
         grub_update_success=false
     fi
 elif [ -x /usr/sbin/grub-mkconfig ]; then
     echo "Fallback, trying with grub-mkconfig..."
     if /usr/sbin/grub-mkconfig -o /boot/grub/grub.cfg; then
-        echo "✓ grub-mkconfig executed successfully"
+        echo "grub-mkconfig executed successfully"
         grub_update_success=true
     else
-        echo "✗ ERROR when running grub-mkconfig"
+        echo "ERROR when running grub-mkconfig"
         grub_update_success=false
     fi
 else
-    echo "✗ Neither update-grub nor grub-mkconfig found"
+    echo "Neither update-grub nor grub-mkconfig found"
     grub_update_success=false
 fi
 
 # Indicate the snapshot number in GRUB's menuentry (only if update succeeded)
 if [ "$grub_update_success" = true ] && [ -f /boot/grub/grub.cfg ]; then
     sed -i "s|\(^menuentry '\)\([^']*\)|\1\2 (snapshot $new_sn)|" /boot/grub/grub.cfg
-    echo "✓ Snapshot number set in GRUB's menuentry"
+    echo "Snapshot number set in GRUB's menuentry"
 fi
 
 # Reinstall GRUB depending on the mode
@@ -165,18 +165,18 @@ if [ "$install_mode" = "efi" ]; then
     if [ -x /usr/sbin/grub-install ]; then
         echo "Running grub-install (EFI)..."
         if /usr/sbin/grub-install 2>&1; then
-            echo "✓ grub-install executed successfully"
+            echo "grub-install executed successfully"
         else
-            echo "✗ ERROR in grub-install"
+            echo "ERROR in grub-install"
         fi
     fi
 elif [ "$install_mode" = "bios" ] && [ -n "$grub_target" ]; then
     if [ -x /usr/sbin/grub-install ]; then
         echo "Running grub-install in $grub_target (BIOS)..."
         if /usr/sbin/grub-install "$grub_target" 2>&1; then
-            echo "✓ grub-install executed successfully"
+            echo "grub-install executed successfully"
         else
-            echo "✗ ERROR in grub-install"
+            echo "ERROR in grub-install"
         fi
     fi
 fi
