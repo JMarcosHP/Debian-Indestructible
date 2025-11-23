@@ -13,9 +13,8 @@
 # - base
 # - utilities
 # - basic-server
-# - gnome
+# - gnome-desktop
 # - gnome-extensions
-# - gnome-apps
 # - gnome-flatpak
 # - gnome-snapd
 # - fcitx5-support-gnome
@@ -23,12 +22,15 @@
 # - kde-flatpak
 # - kde-snapd
 # - fcitx5-support-kde
+# - xfce4-desktop
+# - xfce4-flatpak
+# - xfce4-snapd
 # - restricted-extras
 # - gaming
 #
 # Order:
 # base -> utilities -> basic-server
-# base -> utilities -> DE -> extensions,apps,flatpak,snapd -> Fcitx5 (if needed) -> restricted-extras -> gaming
+# base -> utilities -> DE -> extensionss,flatpak,snapd -> Fcitx5 (if needed) -> restricted-extras -> gaming
 #
 set -e
 
@@ -41,12 +43,17 @@ base() {
 		meson \
 		debhelper \
 		vim \
+		eject \
+		iw \
+		libnss-mdns \
 		firewalld \
 		needrestart \
 		net-tools \
 		avahi-daemon \
+		anacron \
 		firmware-linux \
 		firmware-linux-nonfree \
+		fonts-recommended \
 		cryptsetup \
 		cryptsetup-bin \
 		cryptsetup-initramfs \
@@ -121,7 +128,6 @@ basic-server() {
 		dmsetup \
 		eatmydata \
 		ed \
-		eject \
 		ethtools \
 		file \
 		findutils \
@@ -201,7 +207,7 @@ basic-server() {
 		zerofree
 }
 
-gnome() {
+gnome-desktop() {
     sudo apt install -y \
 		desktop-base \
 		adwaita-icon-theme \
@@ -218,6 +224,7 @@ gnome() {
 		printer-driver-all \
 		printer-driver-cups-pdf \
 		printer-driver-hpijs \
+		system-config-printer \
 		system-config-printer-common \
 		system-config-printer-udev \
 		fonts-cantarell \
@@ -280,7 +287,6 @@ gnome() {
 		low-memory-monitor \
 		rygel-playbin \
 		rygel-tracker \
-		avahi-daemon \
 		network-manager \
 		network-manager-l10n \
 		network-manager-openvpn \
@@ -301,11 +307,13 @@ gnome() {
 		network-manager-vpnc \
 		network-manager-vpnc-gnome \
 		wl-clipboard \
+		synaptic \
+		firewall-config \
 		xsel \
 		xdg-user-dirs \
 		xdg-utils
 
-	sudo usermod -aG lpadmin,scanner $USER
+    sudo usermod -aG lpadmin,scanner $USER
     echo "QT_QPA_PLATFORMTHEME=gnome" | sudo tee -a /etc/environment.d/90qt.conf > /dev/null
 }
 
@@ -314,13 +322,6 @@ gnome-extensions() {
 		gnome-shell-extensions \
 		gnome-shell-extensions-common \
 		gnome-shell-extensions-extra
-}
-
-gnome-apps() {
-    sudo apt install -y \
-		firewall-config \
-		ptyxis \
-		synaptic
 }
 
 gnome-flatpak() {
@@ -356,6 +357,7 @@ fcitx5-support-gnome() {
 
 kde-desktop() {
     sudo apt install -y \
+		desktop-base \
 		plasma-desktop \
 		plasma-workspace \
 		plasma-integration \
@@ -387,6 +389,7 @@ kde-desktop() {
 		kdf \
 		print-manager \
 		cups \
+		system-config-printer \
 		system-config-printer-common \
 		system-config-printer-udev \
 		printer-driver-all \
@@ -396,6 +399,7 @@ kde-desktop() {
 		caffeine \
 		ark \
 		skanlite \
+		skanpage \
 		gwenview \
 		kwalletmanager \
 		kde-config-cron \
@@ -490,6 +494,134 @@ fcitx5-support-kde() {
 		kde-config-fcitx5
 
     sudo apt remove uim uim-mozc
+}
+
+xfce4-desktop() {
+    sudo apt install -y \
+		desktop-base \
+		xserver-xorg \
+		xserver-xorg-input-all \
+		xserver-xorg-video-all \
+		alsa-utils \
+		lightdm \
+		lightdm-greeter \
+		slick-greeter \
+		light-locker \
+		libxfce4ui-utils \
+		thunar \
+		thunar-volman \
+		thunar-media-tags-plugin \
+		thunar-archive-plugin \
+		thunar-font-manager \
+		xfce4-appfinder \
+		xfce4-panel \
+		xfce4-pulseaudio-plugin \
+		xfce4-session \
+		xfce4-notes \
+		xfce4-clipman \
+		xfce4-settings \
+		xfce4-screensaver \
+		xfconf \
+		xfdesktop4 \
+		xfwm4 \
+		xfce4-notifyd \
+		mate-polkit \
+		xfce4-appmenu-plugin \
+		xfce4-battery-plugin \
+		xfce4-clipman-plugin \
+		xfce4-cpufreq-plugin \
+		xfce4-cpugraph-plugin \
+		xfce4-dict \
+		xfce4-diskperf-plugin \
+		xfce4-fsguard-plugin \
+		xfce4-genmon-plugin \
+		xfce4-mailwatch-plugin \
+		xfce4-netload-plugin \
+		xfce4-notes-plugin \
+		xfce4-places-plugin \
+		xfce4-panel-profiles \
+		xfce4-screenshooter \
+		xfce4-sensors-plugin \
+		xfce4-smartbookmark-plugin \
+		xfce4-systemload-plugin \
+		xfce4-taskmanager \
+		xfce4-mount-plugin \
+		xfce4-time-out-plugin \
+		xfce4-timer-plugin \
+		xfce4-verve-plugin \
+		xfce4-wavelan-plugin \
+		xfce4-weather-plugin \
+		xfce4-whiskermenu-plugin \
+		xfce4-windowck-plugin \
+		xfce4-eyes-plugin \
+		xfce4-datetime-plugin \
+		xfce4-xkb-plugin \
+		xfce4-indicator-plugin \
+		xfce4-mpc-plugin \
+		xfce4-power-manager \
+		xfce4-power-manager-plugins \
+		xfce4-terminal \
+		gigolo \
+		caffeine \
+		network-manager-applet \
+		nm-connection-editor \
+		network-manager \
+		network-manager-l10n \
+		network-manager-iodine \
+		network-manager-l2tp \
+		network-manager-openconnect \
+		network-manager-openvpn \
+		network-manager-pptp \
+		network-manager-ssh \
+		network-manager-strongswan \
+		network-manager-vpnc \
+		cups \
+		system-config-printer \
+		system-config-printer-common \
+		system-config-printer-udev \
+		printer-driver-all \
+		printer-driver-cups-pdf \
+		printer-driver-hpijs \
+		tango-icon-theme \
+		elementary-xfce-icon-theme \
+		default-dbus-session-bus \
+		xdg-utils \
+		xdg-user-dirs \
+		xsel \
+		pavucontrol \
+		gdebi \
+		gnome-software \
+		gnome-disk-utility \
+		baobab \
+		atril \
+		mousepad \
+		ristretto \
+		xfburn \
+		mate-calc \
+		onboard \
+		font-manager \
+		gnome-characters \
+		engrampa \
+		xsane \
+		synaptics \
+		orca \
+		firewall-config
+}
+
+xfce4-flatpak() {
+    sudo apt install -y \
+		gnome-software-plugin-flatpak \
+		flatpak
+
+    sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+}
+
+xfce4-snapd() {
+    sudo apt install -y \
+		gnome-software-plugin-snap \
+		snapd
+
+    sudo systemclt enable --now snapd
 }
 
 restricted-extras() {
