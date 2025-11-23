@@ -212,26 +212,19 @@ gnome-desktop() {
 		desktop-base \
 		firefox-esr \
 		adwaita-icon-theme \
-		loupe \
-		orca \
-		tecla \
-		zenity \
-		pipewire-audio \
-		simple-scan \
-		baobab \
-		file-roller \
 		cups \
 		cups-pk-helper \
-		printer-driver-all \
-		printer-driver-cups-pdf \
-		printer-driver-hpijs \
 		system-config-printer \
 		system-config-printer-common \
 		system-config-printer-udev \
-		fonts-cantarell \
+		printer-driver-all \
+		printer-driver-cups-pdf \
+		printer-driver-hpijs \
 		gdm3 \
+		gsettings-desktop-schemas \
 		glib-networking \
-		papers \
+		gvfs-backends \
+		gvfs-fuse \
 		gnome-snapshot \
 		gnome-calculator \
 		gnome-calendar \
@@ -260,34 +253,11 @@ gnome-desktop() {
 		gnome-font-viewer \
 		gnome-keyring \
 		gnome-system-monitor \
-		gsettings-desktop-schemas \
+		gnome-sushi \
 		gnome-logs \
 		gnome-terminal \
 		gnome-tweaks \
-		yelp \
 		gnome-user-docs \
-		nautilus \
-		nautilus-share \
-		nautilus-wipe \
-		nautilus-extension-gnome-terminal \
-		ffmpegthumbnailer \
-		gnome-sushi \
-		qgnomeplatform-qt5 \
-		qgnomeplatform-qt6 \
-		gstreamer1.0-packagekit \
-		gstreamer1.0-plugins-base \
-		gstreamer1.0-plugins-good \
-		gvfs-backends \
-		gvfs-fuse \
-		libatk-adaptor \
-		libcanberra-pulse \
-		libglib2.0-bin \
-		libpam-gnome-keyring \
-		libgsf-bin \
-		locales-all \
-		low-memory-monitor \
-		rygel-playbin \
-		rygel-tracker \
 		network-manager \
 		network-manager-l10n \
 		network-manager-openvpn \
@@ -307,6 +277,34 @@ gnome-desktop() {
 		network-manager-strongswan \
 		network-manager-vpnc \
 		network-manager-vpnc-gnome \
+		ffmpegthumbnailer \
+		libatk-adaptor \
+		libcanberra-pulse \
+		libglib2.0-bin \
+		libpam-gnome-keyring \
+		libgsf-bin \
+		low-memory-monitor \
+		rygel-playbin \
+		rygel-tracker \
+		gstreamer1.0-packagekit \
+		gstreamer1.0-plugins-base \
+		gstreamer1.0-plugins-good \
+		qgnomeplatform-qt5 \
+		qgnomeplatform-qt6 \
+		nautilus \
+		nautilus-share \
+		nautilus-wipe \
+		nautilus-extension-gnome-terminal \
+		loupe \
+		orca \
+		tecla \
+		zenity \
+		pipewire-audio \
+		simple-scan \
+		baobab \
+		file-roller \
+		papers \
+		yelp \
 		wl-clipboard \
 		synaptic \
 		firewall-config \
@@ -360,35 +358,11 @@ kde-desktop() {
     sudo apt install -y \
 		desktop-base \
 		firefox-esr \
-		plasma-desktop \
-		plasma-workspace \
-		plasma-integration \
-		plasma-activities-bin \
-		systemsettings \
-		kde-inotify-survey \
-		kwin-x11 \
-		sddm \
-		webext-plasma-browser-integration \
-		udisks2 \
-		upower \
-		gstreamer1.0-qt5 \
-		gstreamer1.0-qt6 \
 		xserver-xorg \
 		xserver-xorg-input-all \
 		xserver-xorg-video-all \
-		kdeconnect \
-		dolphin \
-		dolphin-plugins \
-		kdialog \
-		kfind \
-		konsole \
-		kate \
-		kcalc \
-		khelpcenter \
-		okular \
-		filelight \
-		kcharselect \
-		kdf \
+		udisks2 \
+		upower \
 		print-manager \
 		cups \
 		system-config-printer \
@@ -397,28 +371,12 @@ kde-desktop() {
 		printer-driver-all \
 		printer-driver-cups-pdf \
 		printer-driver-hpijs \
-		smbclient \
-		caffeine \
-		ark \
-		skanlite \
-		skanpage \
-		gwenview \
-		kwalletmanager \
-		kde-config-cron \
-		kwin-addons \
-		ksystemlog \
-		kamera \
-		kamoso \
-		kcolorchooser \
-		kmag \
-		kaccounts-integration \
-		kaccounts-providers \
-		kio-admin \
-		kio-gdrive \
-		kio-ldap \
-		ffmpegthumbs \
-		kdegraphics-thumbnailers \
-		svgpart \
+		systemsettings \
+		sddm \
+		plasma-desktop \
+		plasma-workspace \
+		plasma-integration \
+		plasma-activities-bin \
 		plasma-desktoptheme \
 		plasma-disks \
 		plasma-dataengines-addons \
@@ -439,15 +397,52 @@ kde-desktop() {
 		plasma-calendar-addons \
 		plasma-gmailfeed \
 		polkit-kde-agent-1 \
-		kde-spectacle \
 		kde-config-gtk-style \
 		kde-config-gtk-style-preview \
 		kde-config-plymouth \
 		kde-config-tablet \
 		kde-config-cddb \
+		kde-inotify-survey \
+		kwin-x11 \
+		kwin-addons \
+		kde-config-cron \
+		kdf \
+		kdegraphics-thumbnailers \
+		kaccounts-integration \
+		kaccounts-providers \
+		kio-admin \
+		kio-gdrive \
+		kio-ldap \
+		kde-spectacle \
+		kwalletmanager \
+		ksystemlog \
+		kamera \
+		kamoso \
+		kcolorchooser \
+		kmag \
+		kdialog \
+		kfind \
+		konsole \
+		kate \
+		kcalc \
+		khelpcenter \
+		kcharselect \
+		kdeconnect \
 		colord-kde \
+		dolphin \
+		dolphin-plugins \
+		okular \
+		filelight \
+		caffeine \
+		ark \
+		skanlite \
+		skanpage \
+		gwenview \
+		webext-plasma-browser-integration \
 		qt-style-kvantum \
 		qt-style-kvantum-l10n \
+		gstreamer1.0-qt5 \
+		gstreamer1.0-qt6 \
 		network-manager \
 		network-manager-l10n \
 		network-manager-iodine \
@@ -458,6 +453,9 @@ kde-desktop() {
 		network-manager-ssh \
 		network-manager-strongswan \
 		network-manager-vpnc \
+		smbclient \
+		ffmpegthumbs \
+		svgpart \
 		wl-clipboard \
 		xsel \
 		xdg-user-dirs \
@@ -505,16 +503,18 @@ xfce4-desktop() {
 		xserver-xorg \
 		xserver-xorg-input-all \
 		xserver-xorg-video-all \
+		default-dbus-session-bus \
 		alsa-utils \
 		lightdm \
 		slick-greeter \
 		light-locker \
-		libxfce4ui-utils \
-		thunar \
-		thunar-volman \
-		thunar-media-tags-plugin \
-		thunar-archive-plugin \
-		thunar-font-manager \
+		cups \
+		system-config-printer \
+		system-config-printer-common \
+		system-config-printer-udev \
+		printer-driver-all \
+		printer-driver-cups-pdf \
+		printer-driver-hpijs \
 		xfce4-appfinder \
 		xfce4-panel \
 		xfce4-pulseaudio-plugin \
@@ -563,8 +563,12 @@ xfce4-desktop() {
 		xfce4-power-manager \
 		xfce4-power-manager-plugins \
 		xfce4-terminal \
-		gigolo \
-		caffeine \
+		libxfce4ui-utils \
+		thunar \
+		thunar-volman \
+		thunar-media-tags-plugin \
+		thunar-archive-plugin \
+		thunar-font-manager \
 		network-manager-applet \
 		nm-connection-editor \
 		network-manager \
@@ -577,16 +581,12 @@ xfce4-desktop() {
 		network-manager-ssh \
 		network-manager-strongswan \
 		network-manager-vpnc \
-		cups \
-		system-config-printer \
-		system-config-printer-common \
-		system-config-printer-udev \
-		printer-driver-all \
-		printer-driver-cups-pdf \
-		printer-driver-hpijs \
 		elementary-xfce-icon-theme \
-		default-dbus-session-bus \
 		xdg-utils \
+		mugshot \
+		menulibre \
+		gigolo \
+		caffeine \
 		xdg-user-dirs \
 		xsel \
 		pavucontrol \
