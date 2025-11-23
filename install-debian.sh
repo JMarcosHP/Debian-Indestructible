@@ -337,7 +337,7 @@ gnome-snapd() {
 		gnome-software-plugin-snap \
 		snapd
 
-    sudo systemclt enable --now snapd
+    sudo systemctl enable --now snapd
 }
 
 fcitx5-support-gnome() {
@@ -622,7 +622,7 @@ xfce4-snapd() {
 		gnome-software-plugin-snap \
 		snapd
 
-    sudo systemclt enable --now snapd
+    sudo systemctl enable --now snapd
 }
 
 restricted-extras() {
