@@ -600,7 +600,7 @@ xfce4-desktop() {
 		font-manager \
 		gnome-characters \
 		engrampa \
-		xsane \
+		simple-scan \
 		synaptic \
 		orca \
 		firewall-config
