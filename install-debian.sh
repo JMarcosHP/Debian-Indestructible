@@ -606,6 +606,8 @@ xfce4-desktop() {
 		synaptics \
 		orca \
 		firewall-config
+
+	sudo usermod -aG lpadmin,scanner $USER
 }
 
 xfce4-flatpak() {
