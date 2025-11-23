@@ -602,7 +602,7 @@ xfce4-desktop() {
 		gnome-characters \
 		engrampa \
 		xsane \
-		synaptics \
+		synaptic \
 		orca \
 		firewall-config
 
