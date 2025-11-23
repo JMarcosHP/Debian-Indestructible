@@ -57,7 +57,7 @@ base() {
 		cryptsetup \
 		cryptsetup-bin \
 		cryptsetup-initramfs \
- 		command-not-found \
+		command-not-found \
 		distro-info \
 		distro-info-data \
 		e2fsprogs \
@@ -583,12 +583,12 @@ xfce4-desktop() {
 		network-manager-vpnc \
 		elementary-xfce-icon-theme \
 		xdg-utils \
+		xdg-user-dirs \
+		xsel \
 		mugshot \
 		menulibre \
 		gigolo \
 		caffeine \
-		xdg-user-dirs \
-		xsel \
 		pavucontrol \
 		gdebi \
 		gnome-software \
