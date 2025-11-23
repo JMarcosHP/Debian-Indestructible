@@ -504,7 +504,6 @@ xfce4-desktop() {
 		xserver-xorg-video-all \
 		alsa-utils \
 		lightdm \
-		lightdm-greeter \
 		slick-greeter \
 		light-locker \
 		libxfce4ui-utils \
