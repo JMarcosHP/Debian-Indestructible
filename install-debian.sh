@@ -210,6 +210,7 @@ basic-server() {
 gnome-desktop() {
     sudo apt install -y \
 		desktop-base \
+		firefox-esr \
 		adwaita-icon-theme \
 		loupe \
 		orca \
@@ -358,6 +359,7 @@ fcitx5-support-gnome() {
 kde-desktop() {
     sudo apt install -y \
 		desktop-base \
+		firefox-esr \
 		plasma-desktop \
 		plasma-workspace \
 		plasma-integration \
@@ -499,6 +501,7 @@ fcitx5-support-kde() {
 xfce4-desktop() {
     sudo apt install -y \
 		desktop-base \
+		firefox-esr \
 		xserver-xorg \
 		xserver-xorg-input-all \
 		xserver-xorg-video-all \
