@@ -581,7 +581,6 @@ xfce4-desktop() {
 		printer-driver-all \
 		printer-driver-cups-pdf \
 		printer-driver-hpijs \
-		tango-icon-theme \
 		elementary-xfce-icon-theme \
 		default-dbus-session-bus \
 		xdg-utils \
