@@ -136,7 +136,7 @@ Special thanks to the Siduction developers for sharing this solution.
 
 ## See Also
 
-- [Installation variants](../README.md#Installation-variants)
+- [Installation variants](../README.md#installation-variants)
 - [Rollback Guide](../rollbacks.md)
 - [openSUSE Snapper Issue #722](https://github.com/openSUSE/snapper/issues/722)
 - [Siduction BTRFS Implementation](https://github.com/siduction/siduction-btrfs)
