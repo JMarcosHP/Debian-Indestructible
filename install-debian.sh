@@ -246,7 +246,6 @@ gnome-desktop() {
 		gnome-user-share \
 		gnome-bluetooth-sendto \
 		gnome-session \
-		gnome-session-xsession \
 		gnome-settings-daemon \
 		gnome-shell \
 		gnome-online-accounts \
