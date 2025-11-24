@@ -304,6 +304,8 @@ gnome-desktop() {
 		baobab \
 		file-roller \
 		papers \
+		brasero \
+		brasero-cdrkit \
 		yelp \
 		wl-clipboard \
 		synaptic \
