@@ -44,7 +44,7 @@ All configurations use:
 
 For the best experience, use a Debian or Ubuntu-based live environment:
 
-- **[Kubuntu](https://kubuntu.org/getkubuntu/)** - Ubuntu with KDE Plasma
+- **[Kubuntu](https://kubuntu.org/download/)** - Ubuntu with KDE Plasma
 - **[Debian Live with KDE](https://www.debian.org/CD/live/)** - Official Debian live image
 - **[Ubuntu](https://ubuntu.com/download/desktop)** - Standard Ubuntu with GNOME
 
