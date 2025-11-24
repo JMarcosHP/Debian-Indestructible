@@ -6,6 +6,9 @@
 #
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
 
+#############################################################################################################################################################################
+# Required mountpoints and subvolumes for the basic system operation.
+
 # ESP
 UUID=dummy-esp                                  /boot/efi                      vfat noatime,nodiratime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro 0 1
 
@@ -26,17 +29,30 @@ UUID=dummy-system       /var/lib/portables             btrfs noatime,nodiratime,
 UUID=dummy-system       /tmp                           btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/tmp                           0 1
 UUID=dummy-system       /.snapshots                    btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/.snapshots                    0 1
 
-# SWAP PARTITION
+# SWAP Partition
 #UUID=dummy-swap       none                           swap defaults                                                                                                    0 0
 
-# SWAPFILE
+# SWAP file
 #UUID=dummy-system       /swap                          btrfs noatime,nodiratime,compress=no,subvol=/@/swap                                                              0 0
 #/swap/swapfile                                  none                           swap  defaults                                                                                                   0 0
 
-# Desktop Environment
+##############################################################################################################################################################################
+# Desktop environment specific subvolumes that must be writable in order to boot from snapper's read-only snapshots
+
+# REQUIRED for any desktop environment
 #UUID=dummy-system       /var/lib/AccountsService       btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/AccountsService       0 1
+
+# KDE SDDM support
 #UUID=dummy-system       /var/lib/sddm                  btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/sddm                  0 1
+
+# Gnome GDM support
 #UUID=dummy-system       /var/lib/gdm3                  btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/gdm3                  0 1
+
+# LightDM based desktop environment support
+#UUID=dummy-system       /var/lib/lightdm               btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/lightdm               0 1
+
+##############################################################################################################################################################################
+# Additional subvolumes for specific applications/software that need to be excluded from snapshots
 
 # Flatpak
 #UUID=dummy-system       /var/lib/flatpak               btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/flatpak               0 1
@@ -66,5 +82,10 @@ UUID=dummy-system       /.snapshots                    btrfs noatime,nodiratime,
 #UUID=dummy-system       /var/lib/mysql                 btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/mysql                 0 1
 #UUID=dummy-system       /var/lib/mongodb               btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/mongodb               0 1
 
-# Extra
+# User-defined extra subvolumes
+# ...
+
+###############################################################################################################################################################################
+# User-defined extra mountpoints
+
 # ...
