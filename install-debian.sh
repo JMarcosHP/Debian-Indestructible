@@ -575,6 +575,7 @@ xfce4-desktop() {
 		thunar-media-tags-plugin \
 		thunar-archive-plugin \
 		thunar-font-manager \
+		blueman \
 		network-manager-applet \
 		nm-connection-editor \
 		network-manager \
