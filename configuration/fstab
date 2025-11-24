@@ -78,7 +78,7 @@ UUID=dummy-system       /.snapshots                    btrfs noatime,nodiratime,
 #UUID=dummy-system       /var/lib/waydroid              btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/waydroid              0 1
 
 # Databases
-#UUID=dummy-system       /var/lib/postgres              btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/postgres              0 1
+#UUID=dummy-system       /var/lib/postgresql            btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/postgres              0 1
 #UUID=dummy-system       /var/lib/mysql                 btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/mysql                 0 1
 #UUID=dummy-system       /var/lib/mongodb               btrfs noatime,nodiratime,compress-force=zstd:3,space_cache=v2,commit=120,subvol=/@/var/lib/mongodb               0 1
 
