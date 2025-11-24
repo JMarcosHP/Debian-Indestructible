@@ -4,7 +4,7 @@
 
 ## Overview
 
-**Debian Indestructible** is a comprehensive guide for building a resilient, snapshot-capable Debian system using BTRFS and Snapper. This setup combines Debian's rock-solid stability with the advanced features of BTRFS snapshots, allowing you to roll back system changes effortlessly and recover from catastrophic failures.
+**Debian Indestructible** is a comprehensive guide for building a resilient, snapshot-capable Debian vanilla system using BTRFS and Snapper. This setup combines Debian's rock solid stability with the advanced features of BTRFS snapshots, allowing you to roll back system changes effortlessly and recover from catastrophic failures.
 
 Whether you're experimenting with new software, performing risky upgrades, or simply want peace of mind, this guide will help you create a system that's virtually indestructible.
 
@@ -12,13 +12,13 @@ Whether you're experimenting with new software, performing risky upgrades, or si
 
 - **Atomic Snapshots**: Take instant snapshots of your entire system before any major change
 - **Effortless Rollbacks**: Boot directly into previous snapshots from GRUB if something breaks
-- **Fine-Grained Control**: Exclude specific directories (like `/home`, `/var/lib/docker`) from snapshots
+- **Fine-Grained Control**: Exclude specific directories (like `/home`, `/var/lib/docker`, etc) from snapshots
 - **Automatic Snapshots**: Timeline-based snapshots capture your system state throughout the day
-- **Full Disk Encryption**: Optional LUKS2 encryption with modern argon2id or pbkdf2 key derivation
+- **Full Disk Encryption**: Optional LUKS2 encryption with modern argon2id (GRUB 2.14rc and up) or pbkdf2 key derivation
 - **Hibernation Support**: Properly configured hibernation with swapfile or swap partition
 - **Desktop Environment Ready**: Includes configurations for GNOME, KDE, XFCE, and display managers
 
-## Summary
+## Installation variants
 
 This repository provides six installation variants:
 
@@ -44,11 +44,11 @@ All configurations use:
 
 For the best experience, use a Debian or Ubuntu-based live environment:
 
-- **[Kubuntu](https://kubuntu.org/getkubuntu/)** - Ubuntu with KDE Plasma (recommended for beginners)
+- **[Kubuntu](https://kubuntu.org/getkubuntu/)** - Ubuntu with KDE Plasma
 - **[Debian Live with KDE](https://www.debian.org/CD/live/)** - Official Debian live image
 - **[Ubuntu](https://ubuntu.com/download/desktop)** - Standard Ubuntu with GNOME
 
-These live environments include all necessary tools (debootstrap, BTRFS utilities, cryptsetup) and provide a comfortable desktop experience during installation.
+These live environments include necessary tools and provide a comfortable desktop experience during installation.
 
 ### Minimum Requirements
 
@@ -89,7 +89,7 @@ The installation creates a carefully designed subvolume structure that:
 - Keeps package manager databases consistent across snapshots
 - Excludes user data, logs, and caches from automatic snapshots
 - Prevents data loss when rolling back system changes
-- Optimizes disk space usage with shared extents
+- Optimizes disk space usage
 
 ### Snapper Integration
 
@@ -106,7 +106,7 @@ A custom Snapper plugin that:
 
 - Detects snapshot rollback requests
 - Automatically updates GRUB configuration
-- Ensures kernel and initramfs match the restored snapshot
+- Ensures kernel and initramfs match the restored snapshot path
 - Logs operations for troubleshooting
 
 This plugin bridges the gap between Debian/Ubuntu and openSUSE's native snapshot integration, making rollbacks truly seamless.
@@ -120,11 +120,12 @@ cd ~/Debian-Indestructible
 chmod +x install-debian.sh
 ./install-debian.sh <parameter>
 ```
+You can check the package list [here](install-debian.sh).
 
 **Available options:**
 - `base`                                            - Essential system packages
 - `utilities`                                       - Additional useful tools
-- `basic-server`                                    - Server packages (SSH, etc.)
+- `basic-server`                                    - Basic Server packages (SSH, etc.)
 - `gnome-desktop` / `kde-desktop` / `xfce4-desktop` - Full desktop environments
 - `gnome-extensions`                                - Gnome Extensions provided by Debian
 - `gnome-flatpak` / `kde-flatpak` / `xfce4-flatpak` - Flatpak integration
@@ -133,13 +134,23 @@ chmod +x install-debian.sh
 - `restricted-extras`                               - Codecs and proprietary software
 - `gaming`                                          - Gaming essentials
 
-**Recommended installation order:**
+**Recommended installation order for Desktop:**
 ```bash
 ./install-debian.sh base
 ./install-debian.sh utilities
 ./install-debian.sh kde-desktop
 ./install-debian.sh kde-flatpak
+./install-debian.sh fcitx5-support-kde # Optional
 ./install-debian.sh restricted-extras
+./install-debian.sh gaming
+```
+
+**Recommended installation order for Server:**
+
+```bash
+./install-debian.sh base
+./install-debian.sh utilities
+./install-debian.sh basic-server
 ```
 
 ## Rolling Back Your System
@@ -152,13 +163,13 @@ Contributions are welcome! If you find issues, have suggestions, or want to add 
 
 ## Support the Project
 
-If this guide helped you build a more resilient system, consider supporting further development:
+If this guide helped you to build a more resilient system, consider supporting further development:
 
 **Available Methods:**
 - [PayPal](https://paypal.me/JMarcosHP)
 - [Github Sponsors](https://github.com/sponsors/JMarcosHP)
 
-Every contribution helps maintain and improve these guides. Thank you! 💙
+Testing and research takes a lot of time, every contribution helps maintain and improve these guides. Thank you! 💙
 
 ## License
 
@@ -169,8 +180,8 @@ This project is licensed under the GNU GPL v3.0 License - see the [LICENSE](LICE
 Special thanks to:
 
 - The [openSUSE](https://www.opensuse.org/) team for pioneering BTRFS snapshot integration
-- [Siduction developers](https://github.com/siduction/siduction-btrfs) for the GRUB rollback implementation
-- [Antynea](https://github.com/Antynea/grub-btrfs) for grub-btrfs
+- [Siduction developers](https://github.com/siduction) for the GRUB rollback implementation
+- [GRUB-BTRFS developers](https://github.com/Antynea/grub-btrfs) for snapshots menu integration
 - The Debian and Linux communities for extensive documentation
 
 ## Resources that complemented every guide in this repository
