@@ -110,7 +110,7 @@ A custom Snapper plugin that:
 - Logs operations for troubleshooting
 
 This plugin bridges the gap between Debian/Ubuntu and openSUSE's native snapshot integration, making rollbacks truly seamless.
-For a detailed explanation about this plugin please [see]()
+For a detailed explanation about this plugin please [see](plugin-explanation.md).
 
 ## Post-Installation
 
