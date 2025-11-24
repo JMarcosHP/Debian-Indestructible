@@ -75,6 +75,7 @@ base() {
 		usbutils \
 		util-linux \
 		xfsprogs \
+		plocate \
 		tcpdump
 }
 
