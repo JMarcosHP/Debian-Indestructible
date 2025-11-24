@@ -64,17 +64,17 @@ These live environments include all necessary tools (debootstrap, BTRFS utilitie
 
 | Guide | Swap Type | Hibernation | Video Demo |
 |-------|-----------|-------------|------------|
-| [EFI + Swapfile](guides/EFI-SWAPFILE.md) | BTRFS swapfile | ✅ Yes | [Watch](video-link-placeholder) |
-| [EFI + Swap Partition](guides/EFI-SWAPPARTITION.md) | Dedicated partition | ✅ Yes | [Watch](video-link-placeholder) |
-| [EFI + ZRAM](guides/EFI-ZRAM.md) | Compressed RAM | ❌ No | [Watch](video-link-placeholder) |
+| [EFI + Swapfile](guides/EFI-SWAPFILE.md) | BTRFS swapfile | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
+| [EFI + Swap Partition](guides/EFI-SWAPPARTITION.md) | Dedicated partition | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
+| [EFI + ZRAM](guides/EFI-ZRAM.md) | Compressed RAM | ❌ No | [Watch](video-link-placeholder) 🚧 |
 
 ### Encrypted EFI Systems x86_64
 
 | Guide | Encryption | Swap Type | Hibernation | Video Demo |
 |-------|------------|-----------|-------------|------------|
-| [EFI + LUKS2 + Swapfile](guides/EFI-LUKS2-SWAPFILE.md) | LUKS2 | BTRFS swapfile | ✅ Yes | [Watch](video-link-placeholder) |
-| [EFI + LUKS2 + Swap Partition](guides/EFI-LUKS2-SWAPPARTITION.md) | LUKS2 | Encrypted partition | ✅ Yes | [Watch](video-link-placeholder) |
-| [EFI + LUKS2 + ZRAM](guides/EFI-LUKS2-ZRAM.md) | LUKS2 | Compressed RAM | ❌ No | [Watch](video-link-placeholder) |
+| [EFI + LUKS2 + Swapfile](guides/EFI-LUKS2-SWAPFILE.md) | LUKS2 | BTRFS swapfile | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
+| [EFI + LUKS2 + Swap Partition](guides/EFI-LUKS2-SWAPPARTITION.md) | LUKS2 | Encrypted partition | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
+| [EFI + LUKS2 + ZRAM](guides/EFI-LUKS2-ZRAM.md) | LUKS2 | Compressed RAM | ❌ No | [Watch](video-link-placeholder) 🚧 |
 
 ### Standard BIOS-MBR Systems
 
@@ -171,7 +171,7 @@ Special thanks to:
 - The [openSUSE](https://www.opensuse.org/) team for pioneering BTRFS snapshot integration
 - [Siduction developers](https://github.com/siduction/siduction-btrfs) for the GRUB rollback implementation
 - [Antynea](https://github.com/Antynea/grub-btrfs) for grub-btrfs
-- The Debian and BTRFS communities for extensive documentation
+- The Debian and Linux communities for extensive documentation
 
 ## Resources that complemented every guide in this repository
 
