@@ -428,6 +428,10 @@ kde-desktop() {
 		khelpcenter \
 		kcharselect \
 		kdeconnect \
+		k3b \
+		k3b-i18n \
+		k3b-extrathemes \
+		libk3b-extracodecs \
 		colord-kde \
 		dolphin \
 		dolphin-plugins \
@@ -640,7 +644,6 @@ restricted-extras() {
 		gstreamer1.0-plugins-base \
 		gstreamer1.0-vaapi \
 		gstreamer1.0-libav \
-		libk3b-extracodecs \
 		ttf-mscorefonts-installer \
 		rar \
 		unrar
