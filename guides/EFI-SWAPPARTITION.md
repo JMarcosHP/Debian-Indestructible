@@ -558,10 +558,6 @@ sed -i "s/dummy-esp/$ESP_UUID/g; s/dummy-swap/$SWAP_UUID/g; s/dummy-system/$SYST
 
 #### 27. Verify and Edit fstab
 
-```bash
-nano /mnt/etc/fstab
-```
-
 For option A ensure:
 - ESP is mounted at `/boot/efi`
 - All your subvolumes are correctly listed
@@ -571,6 +567,10 @@ For option A ensure:
 For option B:
 
 Edit the file and uncomment your selected subvolumes, including the swap partition entry.
+
+```bash
+nano /mnt/etc/fstab
+```
 
 ### System Configuration
 
@@ -603,7 +603,7 @@ ff02::2         ip6-allrouters
 EOF
 ```
 
-#### 31. Configure Localization
+#### 31. Configure System
 
 ```bash
 dpkg-reconfigure locales tzdata keyboard-configuration console-setup
@@ -629,7 +629,7 @@ Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 EOF
 ```
 
-Add the full sources for your specific Debian release, you can copy an example from [here](https://github.com/JMarcosHP/Debian-Indestructible/tree/main/sources).
+Add the full sources for your specific Debian release, you can copy an example from [here](https://github.com/JMarcosHP/Debian-Indestructible/tree/main/sources) in both `.list` and `.sources` formats.
 
 #### 33. Update System
 
@@ -656,15 +656,17 @@ apt install -y --no-install-recommends xdg-user-dirs xdg-utils
 
 #### 36. Install Kernel and Firmware
 
-**For sid/unstable:**
+**Regular kernel:**
 ```bash
 apt install -y linux-image-amd64 linux-headers-amd64 firmware-linux firmware-linux-nonfree dkms
 ```
 
-**For stable (with backports kernel):**
+**For stable with backports kernel:**
 ```bash
-apt install -t trixie-backports linux-image-amd64 linux-headers-amd64 firmware-linux firmware-linux-nonfree
+apt install -t <codename>-backports linux-image-amd64 linux-headers-amd64 firmware-linux firmware-linux-nonfree
 ```
+
+Replace <codename> with your current Debian Stable release name.
 
 #### 37. Configure Network Manager
 
@@ -839,7 +841,7 @@ TIMELINE_LIMIT_MONTHLY=1 \
 TIMELINE_LIMIT_YEARLY=0
 ```
 
-#### 55. Optional: Configure Snapper for /home
+#### 55. Optional: Configure Snapper for `/home`
 
 ```bash
 snapper --no-dbus -c home create-config /home
@@ -889,7 +891,7 @@ Remove the installation media when prompted.
 
 ## Post-Installation
 
-### Install Desktop Environment
+### Install A Desktop Environment
 
 After your first boot, log in and install your desired desktop environment:
 
