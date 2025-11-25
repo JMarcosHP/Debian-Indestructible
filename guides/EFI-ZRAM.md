@@ -18,7 +18,7 @@
   - [Bootloader Installation](#bootloader-installation)
   - [Snapper Setup](#snapper-setup)
 - [Post-Installation](#post-installation)
-- [Conclusion](#conclusion)
+- [Final Notes](#final-notes)
 
 ## Introduction
 
@@ -981,7 +981,7 @@ This shows:
 sudo snapper -c root create --description "Fresh installation"
 ```
 
-## Conclusion
+## Final Notes
 
 Congratulations! You've built a high-performance Debian system that maximizes your RAM efficiency through ZRAM compression. Your system now features:
 
