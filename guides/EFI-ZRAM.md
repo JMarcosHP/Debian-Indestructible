@@ -1010,7 +1010,7 @@ Congratulations! You've built a high-performance Debian system that maximizes yo
 - Set up backups (snapshots are NOT backups!)
 - Read the [Rollback Guide](https://github.com/JMarcosHP/Debian-Indestructible/blob/main/rollbacks.md) to learn snapshot management
 
-Welcome to your fast, efficient, and indestructible Debian system! 🚀
+Welcome to your fast, efficient, and indestructible Debian system! 🛡️
 
 ---
 
