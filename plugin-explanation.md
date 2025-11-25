@@ -130,7 +130,7 @@ The plugin runs with:
 
 ## Credits
 
-This implementation is based on [Siduction's rollback-grub.sh](https://github.com/siduction/siduction-btrfs/blob/main/siduction-btrfs-0.4.0/rollback-grub.sh), adapted for Debian/Ubuntu systems with enhancements for error handling and logging.
+This implementation is based on [Siduction's rollback-grub.sh](https://github.com/siduction/siduction-btrfs/blob/main/siduction-btrfs-0.4.0/rollback-grub.sh), adapted for vanilla Debian/Ubuntu systems with enhancements for error handling and logging.
 
 Special thanks to the Siduction developers for sharing this solution.
 
