@@ -80,6 +80,10 @@ These live environments include necessary tools and provide a comfortable deskto
 
 > 🚧 **Coming Soon**: BIOS-MBR installation guides are currently in development. These will support legacy BIOS systems with the same snapshot and rollback capabilities.
 
+### Encrypted BIOS-MBR Systems
+
+> 🚧 **Coming Soon**: Encrypted BIOS-MBR installation guides are also planned, providing full disk encryption alongside snapshot features for legacy systems.
+
 ## Key Features Explained
 
 ### BTRFS Subvolume Layout
