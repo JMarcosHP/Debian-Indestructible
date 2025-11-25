@@ -214,7 +214,7 @@ KDE:
 
 Needs to be writable for SDDM configurations
 
-Lightdm based Desktop Environment:
+LightDM based Desktop Environment:
 
 `/var/lib/lightdm`
 
