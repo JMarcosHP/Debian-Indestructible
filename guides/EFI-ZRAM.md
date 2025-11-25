@@ -636,7 +636,7 @@ Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 EOF
 ```
 
-Add the full sources for your specific Debian release, you can copy an example from [here](https://github.com/JMarcosHP/Debian-Indestructible/tree/main/sources).
+Add the full sources for your specific Debian release, you can copy an example from [here](https://github.com/JMarcosHP/Debian-Indestructible/tree/main/sources) in both `.list` and `.sources` formats.
 
 #### 33. Update System
 
