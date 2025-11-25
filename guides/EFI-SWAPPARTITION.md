@@ -666,7 +666,7 @@ apt install -y linux-image-amd64 linux-headers-amd64 firmware-linux firmware-lin
 apt install -t <codename>-backports linux-image-amd64 linux-headers-amd64 firmware-linux firmware-linux-nonfree
 ```
 
-Replace <codename> with your current Debian Stable release name.
+Replace `<codename>` with your current Debian Stable release name.
 
 #### 37. Configure Network Manager
 
