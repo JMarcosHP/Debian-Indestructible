@@ -42,7 +42,7 @@ This guide walks you through installing Debian with BTRFS snapshots, using a ded
 | Partition | Device | Label | Type | Format | Size | Mount Point |
 |-----------|---------|-------|------|--------|------|-------------|
 | **EFI System Partition** | `/dev/device1` | `ESP` | EFI System | FAT32 | 512 MiB | `/boot/efi` |
-| **Swap Partition** | `/dev/device2` | `SWAP` | Linux Swap | swap | RAM + 1 GiB | - |
+| **Swap Partition** | `/dev/device2` | `SWAP` | Linux Swap | swap | Total RAM + 1 GiB | - |
 | **System Partition** | `/dev/device3` | `SYSTEM` | Linux Filesystem | BTRFS | 70 GiB+ | `/` |
 
 **Notes:**
