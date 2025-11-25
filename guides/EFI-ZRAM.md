@@ -926,14 +926,14 @@ chmod +x ~/Debian-Indestructible/install-debian.sh
 **Recommended installation order for Desktop:**
 
 ```bash
-./install-debian.sh base
-./install-debian.sh utilities
-./install-debian.sh kde-desktop   # or gnome-desktop / xfce4-desktop
-./install-debian.sh kde-flatpak   # Flatpak integration
-./install-debian.sh kde-snapd     # Snapd integration
+./install-debian.sh base               # Essential system packages
+./install-debian.sh utilities          # Additional useful tools
+./install-debian.sh kde-desktop        # or gnome-desktop / xfce4-desktop
+./install-debian.sh kde-flatpak        # Flatpak integration
+./install-debian.sh kde-snapd          # Snapd integration
 ./install-debian.sh fcitx5-support-kde # Optional Input method support
-./install-debian.sh restricted-extras # Codecs and proprietary software
-./install-debian.sh gaming  # Optional gaming essentials
+./install-debian.sh restricted-extras  # Codecs and proprietary software
+./install-debian.sh gaming             # Optional gaming essentials
 ```
 
 See the main [README](https://github.com/JMarcosHP/Debian-Indestructible#post-installation) for all available options.
