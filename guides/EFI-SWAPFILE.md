@@ -533,6 +533,8 @@ chattr +C -R /mnt/snap  # Optional: if using Snap packages
 
 Choose your Debian release: `sid`, `testing`, `forky`, `trixie`, `stable`, etc.
 
+For example, to install `sid`:
+
 ```bash
 debootstrap --arch=amd64 \
 --components=main,contrib,non-free,non-free-firmware \
