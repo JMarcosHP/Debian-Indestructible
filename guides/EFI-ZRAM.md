@@ -562,6 +562,7 @@ For option A ensure:
 - Mount options are correct
 
 For option B:
+
 Edit the file and uncomment your selected subvolumes, except the swap entries.
 
 #### 27. Copy System Configuration Files
