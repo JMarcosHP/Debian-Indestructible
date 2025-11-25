@@ -795,7 +795,7 @@ grub-install \
   --recheck
 ```
 
-**For portable/USB devices:**
+**For portable/USB devices re-execute with:**
 ```bash
 grub-install \
   --target=x86_64-efi \
@@ -936,7 +936,7 @@ chmod +x ~/Debian-Indestructible/install-debian.sh
 ./install-debian.sh gaming  # Optional gaming essentials
 ```
 
-See the [main README](https://github.com/JMarcosHP/Debian-Indestructible#post-installation) for all available options.
+See the main [README](https://github.com/JMarcosHP/Debian-Indestructible#post-installation) for all available options.
 
 ### Verify ZRAM Status
 
@@ -958,6 +958,8 @@ free -h
 ```
 
 You should see swap space equal to your RAM size.
+
+**Pro Tip**: To temporarily disable ZRAM for testing, use `sudo swapoff /dev/zram0`. Re-enable with `sudo systemctl restart zramswap.service`.
 
 ### Monitor ZRAM Performance
 
@@ -1013,5 +1015,3 @@ Welcome to your fast, efficient, and indestructible Debian system! 🚀
 ---
 
 **Need help?** Check the [main documentation](https://github.com/JMarcosHP/Debian-Indestructible) or open an issue on [GitHub](https://github.com/JMarcosHP/Debian-Indestructible/issues).
-
-**Pro Tip**: To temporarily disable ZRAM for testing, use `sudo swapoff /dev/zram0`. Re-enable with `sudo systemctl restart zramswap.service`.
