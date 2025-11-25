@@ -168,7 +168,7 @@ The system uses a carefully designed subvolume structure:
 - `@/root` - The Root user's home directory
 - `@/home` - User home directory (configurable snapshots)
 - `@/opt` - Excluded to avoid uninstalling third party software on rollbacks
-- `@/srv` - Contains data for many server rolls. Excluded to avoid data loss on rollbacks
+- `@/srv` - Contains data for many server roles. Excluded to avoid data loss on rollbacks
 - `@/usr/local` - Locally compiled software. Excluded to avoid data loss on rollbacks.
 - `@/var/lib/machines` - Used by Systemd machinectl
 - `@/var/lib/portables` - Used by Systemd portablectl
@@ -207,7 +207,7 @@ KDE:
 
 Needs to be writable for SDDM configurations
 
-Lightdm based Desktop Environment:
+LightDM based Desktop Environment:
 
 `/var/lib/lightdm`
 
@@ -576,10 +576,6 @@ sed -i "s/dummy-esp/$ESP_UUID/g; s/dummy-system/$SYSTEM_UUID/g" /mnt/etc/fstab
 
 #### 29. Verify and Edit fstab
 
-```bash
-nano /mnt/etc/fstab
-```
-
 For option A ensure:
 - ESP is mounted at `/boot/efi`
 - All your subvolumes are correctly listed
@@ -589,6 +585,10 @@ For option A ensure:
 For option B:
 
 Edit the file and uncomment your selected subvolumes, including the swapfile and its subvolume entry.
+
+```bash
+nano /mnt/etc/fstab
+```
 
 ### System Configuration
 
@@ -621,7 +621,7 @@ ff02::2         ip6-allrouters
 EOF
 ```
 
-#### 33. Configure Localization
+#### 33. Configure System
 
 ```bash
 dpkg-reconfigure locales tzdata keyboard-configuration console-setup
@@ -647,7 +647,7 @@ Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 EOF
 ```
 
-Add the full sources for your specific Debian release, you can copy an example from [here](https://github.com/JMarcosHP/Debian-Indestructible/tree/main/sources).
+Add the full sources for your specific Debian release, you can copy an example from [here](https://github.com/JMarcosHP/Debian-Indestructible/tree/main/sources) in both `.list` and `.sources` formats.
 
 #### 35. Update System
 
@@ -674,15 +674,17 @@ apt install -y --no-install-recommends xdg-user-dirs xdg-utils
 
 #### 38. Install Kernel and Firmware
 
-**For sid/unstable:**
+**Regular kernel:**
 ```bash
 apt install -y linux-image-amd64 linux-headers-amd64 firmware-linux firmware-linux-nonfree dkms
 ```
 
-**For stable (with backports kernel):**
+**For stable with backports kernel:**
 ```bash
 apt install -t trixie-backports linux-image-amd64 linux-headers-amd64 firmware-linux firmware-linux-nonfree
 ```
+
+Replace `<codename>` with your current Debian Stable release name.
 
 #### 39. Configure Network Manager
 
@@ -762,7 +764,7 @@ resume=UUID=xxxxx-xxxx-xxxx resume_offset=123456
 #### 48. Configure GRUB
 Add the required GRUB cmdline for hibernation:
 
-Instead of editing the traditional /etc/default/grub file, we will create our custom `.cfg` to overwrite the default variables that Debian ships for GRUB, you can add as many variables as you need, for example: GRUB_THEME, GRUB_TIMEOUT, etc.
+Instead of editing the traditional `/etc/default/grub` file, we will create our custom `.cfg` to overwrite the default variables that Debian ships for GRUB, you can add as many variables as you need, for example: `GRUB_THEME`, `GRUB_TIMEOUT`, etc.
 
 ```bash
 cat > /etc/default/grub.d/custom.cfg << EOF
@@ -856,7 +858,7 @@ TIMELINE_LIMIT_MONTHLY=1 \
 TIMELINE_LIMIT_YEARLY=0
 ```
 
-#### 57. Optional: Configure Snapper for /home
+#### 57. Optional: Configure Snapper for `/home`
 
 ```bash
 snapper --no-dbus -c home create-config /home
@@ -906,7 +908,7 @@ Remove the installation media when prompted.
 
 ## Post-Installation
 
-### Install Desktop Environment
+### Install A Desktop Environment
 
 After your first boot, log in and install your desired desktop environment:
 
