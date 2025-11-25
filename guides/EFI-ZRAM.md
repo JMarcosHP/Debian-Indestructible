@@ -557,9 +557,6 @@ sed -i "s/dummy-esp/$ESP_UUID/g; s/dummy-system/$SYSTEM_UUID/g" /mnt/etc/fstab
 
 #### 26. Verify and Edit fstab
 
-```bash
-nano /mnt/etc/fstab
-```
 For option A ensure:
 - ESP is mounted at `/boot/efi`
 - All your subvolumes are correctly listed
@@ -569,6 +566,10 @@ For option A ensure:
 For option B:
 
 Edit the file and uncomment your selected subvolumes, except the swap entries.
+
+```bash
+nano /mnt/etc/fstab
+```
 
 #### 27. Copy System Configuration Files
 
@@ -609,7 +610,7 @@ ff02::2         ip6-allrouters
 EOF
 ```
 
-#### 31. Configure Localization
+#### 31. Configure System
 
 ```bash
 dpkg-reconfigure locales tzdata keyboard-configuration console-setup
@@ -662,15 +663,18 @@ apt install -y --no-install-recommends xdg-user-dirs xdg-utils
 
 #### 36. Install Kernel and Firmware
 
-**For sid/unstable:**
+**Regular kernel:**
 ```bash
 apt install -y linux-image-amd64 linux-headers-amd64 firmware-linux firmware-linux-nonfree dkms
 ```
 
-**For stable (with backports kernel):**
+**For stable with backports kernel:**
 ```bash
-apt install -t trixie-backports linux-image-amd64 linux-headers-amd64 firmware-linux firmware-linux-nonfree
+apt install -t <codename>-backports linux-image-amd64 linux-headers-amd64 firmware-linux firmware-linux-nonfree
 ```
+
+Replace `<codename>` with your current Debian Stable release name.
+
 
 ### ZRAM Configuration
 
@@ -869,7 +873,7 @@ TIMELINE_LIMIT_MONTHLY=1 \
 TIMELINE_LIMIT_YEARLY=0
 ```
 
-#### 57. Optional: Configure Snapper for /home
+#### 57. Optional: Configure Snapper for `/home`
 
 ```bash
 snapper --no-dbus -c home create-config /home
@@ -918,7 +922,7 @@ Remove the installation media when prompted.
 
 ## Post-Installation
 
-### Install Desktop Environment
+### Install A Desktop Environment
 
 After your first boot, log in and install your desired desktop environment:
 
