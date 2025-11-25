@@ -68,7 +68,7 @@ These live environments include necessary tools and provide a comfortable deskto
 | [EFI + Swap Partition](guides/EFI-SWAPPARTITION.md) | Dedicated partition | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
 | [EFI + Swapfile](guides/EFI-SWAPFILE.md) | BTRFS swapfile | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
 
-### Encrypted EFI Systems x86_64
+### Encrypted EFI Systems x86_64 (Coming Soon 🚧)
 
 | Guide | Encryption | Swap Type | Hibernation | Video Demo |
 |-------|------------|-----------|-------------|------------|
