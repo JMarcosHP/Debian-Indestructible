@@ -30,7 +30,7 @@ This guide sets up Debian with ZRAM, a compressed block device in RAM that serve
 - **Reduces disk wear**: Perfect for SSDs and eMMC storage
 - **Improves responsiveness**: Instant swap operations
 
-**Trade-off**: Hibernation (suspend-to-disk) is not supported with ZRAM, as there's no persistent swap storage.
+**Trade-off**: Hibernation (suspend-to-disk) is not available with this setup, as there's no persistent swap storage.
 
 This configuration is ideal for:
 - Systems with limited RAM (2-4 GB)
@@ -44,7 +44,7 @@ This configuration is ideal for:
 - **Live Environment**: Debian or Ubuntu-based live system ([recommended options](https://github.com/JMarcosHP/Debian-Indestructible#recommended-live-environment))
 - **System Type**: UEFI firmware (check with `ls /sys/firmware/efi`)
 - **Disk Space**: Minimum 70 GB (more recommended for home and data)
-- **RAM**: 4 GB minimum, 8 GB+ recommended for optimal ZRAM performance
+- **RAM**: 4 GB minimum, 8 GB+ recommended for optimal multitasking
 - **Internet Connection**: Required during installation
 - **Backup**: All data on the target disk will be erased
 
@@ -191,33 +191,39 @@ The system uses a carefully designed subvolume structure:
 The `/var/lib/dpkg` and `/var/lib/apt` directories must remain in the default subvolume to ensure package manager consistency across snapshots. This is a Debian/Ubuntu requirement, unlike openSUSE which can use a single `/var` subvolume.
 
 **Specific subvolumes for Desktop Environments**
+
 Some desktop environments must have specific directories as writable in order to boot without issues in Snapper's read-only snapshots.
 
 For any Desktop Environment:
+
 `/var/lib/AccountsService`
 
 Needs to be writable for the `accountsservice` package, this package provides D-Bus interfaces for managing user account information and uses the `/var/lib/AccountsService` directory to store user-related settings, such as user pictures and default sessions.
 
 Gnome:
+
 `/var/lib/gdm3`
 
 Needs to be writable for GDM configurations
 
 KDE:
+
 `/var/lib/sddm`
 
 Needs to be writable for SDDM configurations
 
 Lightdm based Desktop Environment:
+
 `/var/lib/lightdm`
 
 Needs to be writable for LightDM configurations
 
 **Specific subvolumes for applications/software:**
+
 If you want to use docker, virtual machines, lxc containers, databases or waydroid,
 consider creating subvolumes for other directories that contain data you do not want to include in snapshots and rollbacks to avoid running out of space, examples are:
 
-Docker
+Docker:
 ```bash
 /var/lib/docker
 /var/lib/containerd
@@ -225,12 +231,14 @@ Docker
 
 All related container images and volumes are stored there.
 
-Podman
+Podman:
+
 `/var/lib/containers`
 
 All related container images and volumes are stored there.
 
-QEMU/Libvirt virtual machines and LXC containers
+QEMU/Libvirt virtual machines and LXC containers:
+
 `/var/lib/libvirt`
 These two applies to waydroid too
 ```bash
@@ -240,7 +248,7 @@ These two applies to waydroid too
 
 Virtual machine disks and many other configurations are stored there.
 
-Databases
+Databases:
 ```bash
 /var/lib/postgresql
 /var/lib/mysql
@@ -249,17 +257,19 @@ Databases
 
 The database related data and files are stored there.
 
-Waydroid
+Waydroid:
+
 `/var/lib/waydroid`
 
 Waydroid Android images and related configurations are stored there.
 
-Flatpak
+Flatpak:
+
 `/var/lib/flatpak`
 
 All system-wide flatpak applications are stored there.
 
-Snap
+Snap:
 ```bash
 /var/lib/snapd
 /var/snap
@@ -501,7 +511,7 @@ chattr +C -R /mnt/snap  # Optional: if using Snap packages
 
 #### 23. Bootstrap Debian Base System
 
-Choose your Debian release: `sid`, `forky`, `trixie`, `stable`, `oldstable`, etc.
+Choose your Debian release: `sid`, `testing`, `forky`, `trixie`, `stable`, etc.
 
 ```bash
 debootstrap --arch=amd64 \
@@ -513,7 +523,7 @@ sid /mnt http://deb.debian.org/debian
 **Customize**:
 - Replace `task-english` with your language task package (e.g., `task-german`)
 - Add `task-laptop` if installing on a laptop
-- Replace `sid` with your chosen Debian release (e.g., `stable` `testing` `trixie` `unstable`)
+- Replace `sid` with your chosen Debian release.
 
 #### 24. Bind-Mount System Directories
 
@@ -911,16 +921,17 @@ cd ~/Debian-Indestructible
 chmod +x ~/Debian-Indestructible/install-debian.sh
 ```
 
-**Recommended installation order:**
+**Recommended installation order for Desktop:**
 
 ```bash
 ./install-debian.sh base
 ./install-debian.sh utilities
-./install-debian.sh basic-server  # Optional
 ./install-debian.sh kde-desktop   # or gnome-desktop / xfce4-desktop
 ./install-debian.sh kde-flatpak   # Flatpak integration
-./install-debian.sh restricted-extras
-./install-debian.sh gaming  # Optional
+./install-debian.sh kde-snapd     # Snapd integration
+./install-debian.sh fcitx5-support-kde # Optional Input method support
+./install-debian.sh restricted-extras # Codecs and proprietary software
+./install-debian.sh gaming  # Optional gaming essentials
 ```
 
 See the [main README](https://github.com/JMarcosHP/Debian-Indestructible#post-installation) for all available options.
