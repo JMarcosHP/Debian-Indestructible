@@ -17,7 +17,7 @@
   - [Bootloader Installation](#bootloader-installation)
   - [Snapper Setup](#snapper-setup)
 - [Post-Installation](#post-installation)
-- [Conclusion](#conclusion)
+- [Final Notes](#final-notes)
 
 ## Introduction
 
@@ -368,7 +368,7 @@ The `+C` attribute disables copy-on-write, which is required for swapfiles on BT
 #### 15. Create Swapfile
 
 ```bash
-# Replace 'X' with your desired size in GiB (RAM + 1 GiB for hibernation)
+# Replace 'X' with your desired size in GiB (Total RAM + 1 GiB for hibernation)
 btrfs filesystem mkswapfile --size XG --uuid clear /mnt/@/swap/swapfile
 ```
 
@@ -944,9 +944,9 @@ Your system should hibernate and resume successfully.
 sudo snapper -c root create --description "Fresh installation"
 ```
 
-## Conclusion
+## Final Notes
 
-Congratulations! You've successfully built a Debian system that combines rock-solid stability with advanced snapshot capabilities. Your system can now:
+Congratulations! You've successfully built a Debian system that combines rock solid stability with advanced snapshot capabilities. Your system can now:
 
 - Take automatic snapshots before system changes
 - Boot into any previous snapshot from GRUB
@@ -960,7 +960,7 @@ Congratulations! You've successfully built a Debian system that combines rock-so
 - Set up backups (snapshots are NOT backups!)
 - Read the [Rollback Guide](https://github.com/JMarcosHP/Debian-Indestructible/blob/main/rollbacks.md) to learn snapshot management
 
-Remember: **snapshots protect against software issues, but you still need proper backups for hardware failures, theft, or disasters.** Consider using tools like Borg, Restic, or Timeshift for external backups.
+Remember: **snapshots protect against software issues, but you still need proper backups for hardware failures, theft, or disasters.** Consider using tools for external backups.
 
 Welcome to your indestructible Debian system! 🛡️
 
