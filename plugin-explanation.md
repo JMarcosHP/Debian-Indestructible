@@ -137,6 +137,6 @@ Special thanks to the Siduction developers for sharing this solution.
 ## See Also
 
 - [Installation variants](https://github.com/JMarcosHP/Debian-Indestructible#installation-variants)
-- [Rollback Guide](../rollbacks.md)
+- [Rollback Guide](https://github.com/JMarcosHP/Debian-Indestructible/blob/main/rollbacks.md)
 - [openSUSE Snapper Issue #722](https://github.com/openSUSE/snapper/issues/722)
 - [Siduction BTRFS Implementation](https://github.com/siduction/siduction-btrfs)
