@@ -745,7 +745,7 @@ RESUME=UUID=xxxxx-xxxx-xxxx
 
 #### 46. Configure GRUB
 
-Instead of editing the traditional /etc/default/grub file, we will create our custom .cfg to overwrite the default variables that Debian ships for GRUB, you can add as many variables as you need, for example: GRUB_THEME, GRUB_TIMEOUT, etc.
+Instead of editing the traditional /etc/default/grub file, we will create our custom `.cfg` to overwrite the default variables that Debian ships for GRUB, you can add as many variables as you need, for example: GRUB_THEME, GRUB_TIMEOUT, etc.
 
 ```bash
 cat > /etc/default/grub.d/custom.cfg << EOF
