@@ -171,7 +171,7 @@ The system uses a carefully designed subvolume structure:
 - `@/root` - The Root user's home directory
 - `@/home` - User home directory (configurable snapshots)
 - `@/opt` - Excluded to avoid uninstalling third party software on rollbacks
-- `@/srv` - Contains data for many server rolls. Excluded to avoid data loss on rollbacks
+- `@/srv` - Contains data for many server roles. Excluded to avoid data loss on rollbacks
 - `@/usr/local` - Locally compiled software. Excluded to avoid data loss on rollbacks.
 - `@/var/lib/machines` - Used by Systemd machinectl
 - `@/var/lib/portables` - Used by Systemd portablectl
@@ -745,7 +745,7 @@ RESUME=UUID=xxxxx-xxxx-xxxx
 
 #### 46. Configure GRUB
 
-Instead of editing the traditional /etc/default/grub file, we will create our custom `.cfg` to overwrite the default variables that Debian ships for GRUB, you can add as many variables as you need, for example: GRUB_THEME, GRUB_TIMEOUT, etc.
+Instead of editing the traditional `/etc/default/grub` file, we will create our custom `.cfg` to overwrite the default variables that Debian ships for GRUB, you can add as many variables as you need, for example: `GRUB_THEME`, `GRUB_TIMEOUT`, etc.
 
 ```bash
 cat > /etc/default/grub.d/custom.cfg << EOF
