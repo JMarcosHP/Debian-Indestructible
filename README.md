@@ -68,7 +68,7 @@ These live environments include necessary tools and provide a comfortable deskto
 | [EFI + Swap Partition](guides/EFI-SWAPPARTITION.md) | Dedicated partition | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
 | [EFI + Swapfile](guides/EFI-SWAPFILE.md) | BTRFS swapfile | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
 
-### Encrypted EFI Systems x86_64 (Coming Soon 🚧, waiting until GRUB 2.14rc arrives in Debian Sid)
+### Encrypted EFI Systems x86_64 (Coming Soon 🚧, waiting until [GRUB 2.14rc](https://packages.debian.org/sid/grub-efi-amd64-signed) arrives in Debian Sid)
 
 | Guide | Encryption | Swap Type | Hibernation | Video Demo |
 |-------|------------|-----------|-------------|------------|
