@@ -240,7 +240,8 @@ All related container images and volumes are stored there.
 QEMU/Libvirt virtual machines and LXC containers:
 
 `/var/lib/libvirt`
-These two applies to waydroid too
+
+These two applies to waydroid too:
 ```bash
 /var/lib/lxc
 /var/lib/lxcfs
