@@ -176,7 +176,7 @@ The system uses a carefully designed subvolume structure:
 - `@/root` - The Root user's home directory
 - `@/home` - User home directory (configurable snapshots)
 - `@/opt` - Excluded to avoid uninstalling third party software on rollbacks
-- `@/srv` - Contains data for many server rolls. Excluded to avoid data loss on rollbacks
+- `@/srv` - Contains data for many server roles. Excluded to avoid data loss on rollbacks
 - `@/usr/local` - Locally compiled software. Excluded to avoid data loss on rollbacks.
 - `@/var/lib/machines` - Used by Systemd machinectl
 - `@/var/lib/portables` - Used by Systemd portablectl
