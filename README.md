@@ -109,7 +109,7 @@ A custom Snapper plugin that:
 - Ensures kernel and initramfs match the restored snapshot path
 - Logs operations for troubleshooting
 
-This plugin bridges the gap between Debian/Ubuntu and openSUSE's native snapshot integration, making rollbacks truly seamless.
+This [plugin](https://github.com/JMarcosHP/Debian-Indestructible/blob/main/snapper-plugins/99-rollback-grub) bridges the gap between Debian/Ubuntu and openSUSE's native snapshot integration, making rollbacks truly seamless.
 For a detailed explanation about this plugin please [see](plugin-explanation.md).
 
 ## Post-Installation

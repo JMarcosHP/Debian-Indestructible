@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Snapper GRUB Rollback Plugin is a critical component that bridges the gap between snapshot creation and bootable system recovery. Unlike openSUSE, which has native integration between Snapper and the bootloader, Debian and Ubuntu require additional configuration to ensure snapshots are properly bootable.
+The Snapper [GRUB Rollback Plugin](https://github.com/JMarcosHP/Debian-Indestructible/blob/main/snapper-plugins/99-rollback-grub) is a critical component that bridges the gap between snapshot creation and bootable system recovery. Unlike openSUSE, which has native integration between Snapper and the bootloader, Debian and Ubuntu require additional configuration to ensure snapshots are properly bootable.
 
 ## The Problem
 
