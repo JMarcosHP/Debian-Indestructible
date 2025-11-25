@@ -181,6 +181,8 @@ The system uses a carefully designed subvolume structure:
 
 **Why this layout?**
 
+It follows the openSUSE's default [BTRFS layout](https://en.opensuse.org/SDB:BTRFS) with some modifications for Debian/Ubuntu systems. This layout ensures that critical system directories are snapshotted while excluding volatile or user-specific data that should not be rolled back.
+
 The `/var/lib/dpkg` and `/var/lib/apt` directories must remain in the default subvolume to ensure package manager consistency across snapshots. This is a Debian/Ubuntu requirement, unlike openSUSE which can use a single `/var` subvolume.
 
 **Specific subvolumes for Desktop Environments**
