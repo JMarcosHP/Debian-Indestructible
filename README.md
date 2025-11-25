@@ -23,14 +23,14 @@ Whether you're experimenting with new software, performing risky upgrades, or si
 This repository provides six installation variants:
 
 ### Standard EFI Systems (x86_64)
-- **EFI + Swapfile**: Basic setup with hibernation support via swapfile
-- **EFI + Swap Partition**: Traditional swap partition for hibernation
 - **EFI + ZRAM**: Compressed RAM-based swap (no hibernation)
+- **EFI + Swap Partition**: Traditional swap partition for hibernation
+- **EFI + Swapfile**: Basic setup with hibernation support via swapfile
 
 ### Encrypted EFI Systems (x86_64)
-- **EFI + LUKS2 + Swapfile**: Full disk encryption with hibernation
-- **EFI + LUKS2 + Swap Partition**: Encrypted system with separate encrypted swap
 - **EFI + LUKS2 + ZRAM**: Encrypted system with ZRAM (no hibernation)
+- **EFI + LUKS2 + Swap Partition**: Encrypted system with separate encrypted swap
+- **EFI + LUKS2 + Swapfile**: Full disk encryption with hibernation
 
 All configurations use:
 - BTRFS with Snapper for snapshot management
@@ -64,17 +64,17 @@ These live environments include necessary tools and provide a comfortable deskto
 
 | Guide | Swap Type | Hibernation | Video Demo |
 |-------|-----------|-------------|------------|
-| [EFI + Swapfile](guides/EFI-SWAPFILE.md) | BTRFS swapfile | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
-| [EFI + Swap Partition](guides/EFI-SWAPPARTITION.md) | Dedicated partition | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
 | [EFI + ZRAM](guides/EFI-ZRAM.md) | Compressed RAM | ❌ No | [Watch](video-link-placeholder) 🚧 |
+| [EFI + Swap Partition](guides/EFI-SWAPPARTITION.md) | Dedicated partition | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
+| [EFI + Swapfile](guides/EFI-SWAPFILE.md) | BTRFS swapfile | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
 
 ### Encrypted EFI Systems x86_64
 
 | Guide | Encryption | Swap Type | Hibernation | Video Demo |
 |-------|------------|-----------|-------------|------------|
-| [EFI + LUKS2 + Swapfile](guides/EFI-LUKS2-SWAPFILE.md) | LUKS2 | BTRFS swapfile | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
-| [EFI + LUKS2 + Swap Partition](guides/EFI-LUKS2-SWAPPARTITION.md) | LUKS2 | Encrypted partition | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
 | [EFI + LUKS2 + ZRAM](guides/EFI-LUKS2-ZRAM.md) | LUKS2 | Compressed RAM | ❌ No | [Watch](video-link-placeholder) 🚧 |
+| [EFI + LUKS2 + Swap Partition](guides/EFI-LUKS2-SWAPPARTITION.md) | LUKS2 | Encrypted partition | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
+| [EFI + LUKS2 + Swapfile](guides/EFI-LUKS2-SWAPFILE.md) | LUKS2 | BTRFS swapfile | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
 
 ### Standard BIOS-MBR Systems
 
