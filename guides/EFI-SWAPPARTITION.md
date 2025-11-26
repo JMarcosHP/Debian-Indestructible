@@ -784,17 +784,12 @@ grub-install \
 
 ### GRUB-BTRFS Setup
 
-#### 49. Clone and Configure grub-btrfs
+#### 49. Clone grub-btrfs
 
 ```bash
 cd ~/
 git clone https://github.com/Antynea/grub-btrfs.git
 cd grub-btrfs
-
-sed -i.bkp \
-  '/^#GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS=/a \
-GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS="rd.live.overlay.overlayfs=1"' \
-  config
 ```
 
 #### 50. Install grub-btrfs
