@@ -261,7 +261,7 @@ Remember this number (or use `snapper list` to find it later).
 Now make your changes:
 ```bash
 # Install new software
-sudo apt install risky-package
+sudo apt install foo
 
 # Modify system config
 sudo nano /etc/important-config
