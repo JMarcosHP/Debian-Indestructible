@@ -192,6 +192,8 @@ It follows the openSUSE's default [BTRFS layout](https://en.opensuse.org/SDB:BTR
 
 The `/var/lib/dpkg` and `/var/lib/apt` directories must remain in the default subvolume to ensure package manager database consistency across snapshots. This is a Debian/Ubuntu limitation, unlike openSUSE which can use a single `/var` subvolume because Zypper stores its database in `/usr/lib/sysimage/rpm/`.
 
+This is the main issue that prevents using a single `/var` subvolume in Debian/Ubuntu systems and stick to this granular layout for `/var`.
+
 **Specific subvolumes for Desktop Environments**
 
 Some desktop environments must have specific directories as writable in order to boot without issues in Snapper's read-only snapshots.
