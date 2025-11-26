@@ -17,7 +17,7 @@
 
 ## Introduction
 
-One of the most powerful features of your Debian Indestructible system is the ability to **roll back to any previous state**. Whether you've installed broken software, applied a faulty update, or accidentally misconfigured your system, snapshots let you undo these changes with a single command.
+One of the most powerful features of a Debian Indestructible system is the ability to **roll back to any previous state**. Whether you've installed broken software, applied a faulty update, or accidentally misconfigured your system, snapshots let you undo these changes with a single command.
 
 This guide covers three methods for performing rollbacks, from the safest (booting into a read-only snapshot) to the most flexible (live system rollback).
 
@@ -35,7 +35,7 @@ Snapper automatically creates several types of snapshots:
 Each snapshot is:
 - **Immutable** - Cannot be modified once created
 - **Space-efficient** - Only stores changed data (COW)
-- **Bootable** - Can be booted directly from GRUB
+- **Bootable** - Can be booted directly using grub-btrfs
 - **Numbered sequentially** - Starting from 1 (your initial system)
 
 View all snapshots:
@@ -64,7 +64,7 @@ Example output:
 - After a failed system update that prevents normal boot
 - When you want to test if a snapshot resolves your issue
 - For critical rollbacks where safety is paramount
-- When the current system is unstable or unbootable
+- When the current system is unstable
 
 #### Step-by-Step Process
 
@@ -93,7 +93,7 @@ The snapshot boots in **read-only mode**. Log in normally with your user credent
 - Run system updates
 - Make any permanent changes
 
-Any changes will be lost and could corrupt the rollback process.
+Any changes will be lost and could get your system into an inconsistent state.
 
 **4. Verify the snapshot state**
 
@@ -101,6 +101,7 @@ Check that this is the state you want to restore:
 ```bash
 # Check installed packages
 dpkg -l | grep <package-name>
+apt list --installed | grep <package-name>
 
 # Check system files
 cat /etc/some-config-file
@@ -120,7 +121,6 @@ This command:
 - Creates a new writable snapshot based on the current read-only one
 - Configures it as the new default subvolume
 - Triggers the GRUB rollback plugin
-- Updates bootloader configuration
 
 **6. Verify plugin execution**
 
@@ -131,17 +131,17 @@ sudo cat /var/log/snapper.log
 
 Look for entries like:
 ```
-INFO: Rollback initiated for snapshot #X
-INFO: Creating new writable snapshot
-INFO: Updating GRUB configuration
-INFO: Rollback completed successfully
+=== STARTING POST-ROLLBACK GRUB PLUGIN ===
+Mounting the new default snapshot subvolume...
+Running commands inside the chrooted subvolume...
+=== GRUB POST-ROLLBACK PLUGIN FINISHED ===
 ```
 
 **7. Verify GRUB configuration**
 
 Ensure the bootloader points to the correct snapshot:
 ```bash
-sudo cat /boot/efi/EFI/debian/grub.cfg | grep subvol
+sudo cat /boot/efi/EFI/debian/grub.cfg
 ```
 
 Should show the new default subvolume path.
@@ -151,7 +151,7 @@ Should show the new default subvolume path.
 sudo reboot
 ```
 
-Remove any USB media and boot normally. Your system is now restored to the selected snapshot state.
+Your system is now restored to the selected snapshot state.
 
 ---
 
@@ -449,7 +449,7 @@ sudo btrfs subvolume list / | grep snapshots
 2. Boot from a live system
 3. Mount your system:
 ```bash
-sudo mount -o /dev/deviceX /mnt
+sudo mount /dev/deviceX /mnt
 sudo mount /dev/deviceX /mnt/boot/efi
 
 for dir in dev proc sys run; do
@@ -520,7 +520,14 @@ sudo btrfs filesystem usage /
 
 Keep at least 10-20% free space for optimal BTRFS performance.
 
-## Video Demonstration
+### 6. BTRFS Maintenance
+Sometimes BTRFS filesystems needs maintenance, like balancing, scrubbing, or defragmenting.
+
+Some good tools to automate this are:
+- The `btrfsmaintenance` package, provides a configuration file to schedule regular maintenance tasks via systemd timers.
+- GUI tools like `btrfs-assistant` can help visualize and manage BTRFS filesystems, but their rollback functionality is currently incompatible with this BTRFS layout and may disrupt the Snapper snapshot scheme. An existing [GitLab issue](https://gitlab.com/btrfs-assistant/btrfs-assistant/-/issues?show=eyJpaWQiOiIxMzciLCJmdWxsX3BhdGgiOiJidHJmcy1hc3Npc3RhbnQvYnRyZnMtYXNzaXN0YW50IiwiaWQiOjE3NjY3NzA5MH0%3D) tracks this limitation, feel free to follow it or request this feature from the maintainers.
+
+## Video Demonstration (Coming Soon)
 
 Watch the rollback process using grub-btrfs in this video:
 
