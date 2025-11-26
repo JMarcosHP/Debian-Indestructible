@@ -521,10 +521,10 @@ sudo btrfs filesystem usage /
 Keep at least 10-20% free space for optimal BTRFS performance.
 
 ### 6. BTRFS Maintenance
-Sometimes BTRFS filesystems needs maintenance, like balancing, scrubbing, or defragmenting.
+Sometimes BTRFS filesystems need maintenance, like balancing, scrubbing, or defragmenting.
 
 Some good tools to automate this are:
-- The `btrfsmaintenance` package, provides a configuration file to schedule regular maintenance tasks via systemd timers.
+- The `btrfsmaintenance` package, provides a configuration file to schedule regular maintenance tasks via systemd timers. Read the [btrfsmaintenance documentation](https://manpages.debian.org/unstable/btrfsmaintenance/btrfsmaintenance.8.en.html) for setup instructions.
 - GUI tools like `btrfs-assistant` can help visualize and manage BTRFS filesystems, but their rollback functionality is currently incompatible with this BTRFS layout and may disrupt the Snapper snapshot scheme. An existing [GitLab issue](https://gitlab.com/btrfs-assistant/btrfs-assistant/-/issues?show=eyJpaWQiOiIxMzciLCJmdWxsX3BhdGgiOiJidHJmcy1hc3Npc3RhbnQvYnRyZnMtYXNzaXN0YW50IiwiaWQiOjE3NjY3NzA5MH0%3D) tracks this limitation, feel free to follow it or request this feature from the maintainers.
 
 ## Video Demonstration (Coming Soon)
