@@ -227,7 +227,7 @@ After reboot, your system will be in the restored snapshot state.
 
 ### Method 3: Pre-emptive Manual Snapshot
 
-**🛡️ Proactive protection** - create a safety net before risky operations.
+**Proactive protection** - create a safety net before risky operations.
 
 #### When to Use
 - Before installing experimental software
