@@ -920,9 +920,9 @@ chmod +x ~/Debian-Indestructible/install-debian.sh
 ./install-debian.sh base               # Essential system packages
 ./install-debian.sh utilities          # Additional useful tools
 ./install-debian.sh kde-desktop        # or gnome-desktop / xfce4-desktop
-./install-debian.sh kde-flatpak        # Flatpak integration
-./install-debian.sh kde-snapd          # Snapd integration
-./install-debian.sh fcitx5-support-kde # Optional Input method support
+./install-debian.sh kde-flatpak        # or gnome-flatpak / xfce4-flatpak Flatpak integration
+./install-debian.sh kde-snapd          # or gnome-snapd / xfce4-snapd Snapd integration
+./install-debian.sh fcitx5-support-kde # or fcitx5-support-gnome Optional Input method support
 ./install-debian.sh restricted-extras  # Codecs and proprietary software
 ./install-debian.sh gaming             # Optional gaming essentials
 ```
