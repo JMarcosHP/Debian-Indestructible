@@ -213,6 +213,7 @@ Special thanks to:
 - [Snapper GRUB configuration Issue](https://github.com/openSUSE/snapper/issues/722)
 - [Siduction BTRFS Rollback Script](https://github.com/siduction/siduction-btrfs/blob/main/siduction-btrfs-0.4.0/rollback-grub.sh)
 - [RFC 9106 - Argon2 Password Hashing](https://datatracker.ietf.org/doc/html/rfc9106)
+- [openSUSE Rollback guide](https://es.opensuse.org/Snapper_Rollback)
 
 ---
 
