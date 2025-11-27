@@ -185,7 +185,7 @@ The system uses a carefully designed subvolume structure:
 
 It follows the openSUSE's default [BTRFS layout](https://en.opensuse.org/SDB:BTRFS) with some modifications for Debian/Ubuntu systems. This layout ensures that critical system directories are snapshotted while excluding volatile or user-specific data that should not be rolled back.
 
-The `/var/lib/dpkg` and `/var/lib/apt` directories must remain in the default subvolume to ensure package manager database consistency across snapshots. This is a Debian/Ubuntu limitation, unlike openSUSE which can use a single `/var` subvolume because Zypper stores its database in `/usr/lib/sysimage/rpm/`.
+The `/var/lib/dpkg` and `/var/lib/apt` directories must remain in the default subvolume to ensure package manager database consistency across snapshots. This is a Debian/Ubuntu limitation, unlike openSUSE which can use a single `/var` subvolume because Zypper stores its database in `/usr/lib/sysimage/rpm/`. Please refer to [this](https://fedoraproject.org/wiki/Changes/RelocateRPMToUsr) for more information.
 
 This is the main issue that prevents using a single `/var` subvolume in Debian/Ubuntu systems and stick to this granular layout for `/var`.
 
