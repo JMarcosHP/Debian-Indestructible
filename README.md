@@ -62,19 +62,19 @@ These live environments include necessary tools and provide a comfortable deskto
 
 ### Standard EFI Systems x86_64
 
-| Guide | Swap Type | Hibernation | Video Demo |
-|-------|-----------|-------------|------------|
-| [EFI + ZRAM](guides/EFI-ZRAM.md) | Compressed RAM | ❌ No | [Watch](video-link-placeholder) 🚧 |
-| [EFI + Swap Partition](guides/EFI-SWAPPARTITION.md) | Dedicated partition | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
-| [EFI + Swapfile](guides/EFI-SWAPFILE.md) | BTRFS swapfile | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
+| Guide | Swap Type | Hibernation |
+|-------|-----------|-------------|
+| [EFI + ZRAM](guides/EFI-ZRAM.md) | Compressed RAM | ❌ No | 
+| [EFI + Swap Partition](guides/EFI-SWAPPARTITION.md) | Dedicated partition | ✅ Yes 
+| [EFI + Swapfile](guides/EFI-SWAPFILE.md) | BTRFS swapfile | ✅ Yes | 
 
 ### Encrypted EFI Systems x86_64 (Coming Soon 🚧, waiting until [GRUB 2.14rc](https://packages.debian.org/sid/grub-efi-amd64-signed) arrives in Debian Sid)
 
-| Guide | Encryption | Swap Type | Hibernation | Video Demo |
-|-------|------------|-----------|-------------|------------|
-| [EFI + LUKS2 + ZRAM](guides/EFI-LUKS2-ZRAM.md) | LUKS2 | Compressed RAM | ❌ No | [Watch](video-link-placeholder) 🚧 |
-| [EFI + LUKS2 + Swap Partition](guides/EFI-LUKS2-SWAPPARTITION.md) | LUKS2 | Encrypted partition | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
-| [EFI + LUKS2 + Swapfile](guides/EFI-LUKS2-SWAPFILE.md) | LUKS2 | BTRFS swapfile | ✅ Yes | [Watch](video-link-placeholder) 🚧 |
+| Guide | Encryption | Swap Type | Hibernation |
+|-------|------------|-----------|-------------|
+| [EFI + LUKS2 + ZRAM](guides/EFI-LUKS2-ZRAM.md) | LUKS2 | Compressed RAM | ❌ No | 
+| [EFI + LUKS2 + Swap Partition](guides/EFI-LUKS2-SWAPPARTITION.md) | LUKS2 | Encrypted partition | ✅ Yes | 
+| [EFI + LUKS2 + Swapfile](guides/EFI-LUKS2-SWAPFILE.md) | LUKS2 | BTRFS swapfile | ✅ Yes | 
 
 ### Standard BIOS-MBR Systems
 
